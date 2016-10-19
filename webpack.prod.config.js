@@ -58,7 +58,7 @@ module.exports = function makeWebpackConfig() {
 
         // Output path from the view of the page
         // Uses webpack-dev-server in development
-        publicPath: '',
+        publicPath: '/angular-webpack-material-lazyload-typescript-starter-template/',
 
         // Filename for entry points
         // Only adds hash in build mode
