@@ -1,0 +1,29 @@
+<form name="recoverForm" layout="column" layout-align="center center" flex ng-submit="$ctrl.onSubmit(recoverForm.$valid)" novalidate>
+    <div flex="30" layout="column" layout-align="center center" class="md-display-2">
+        <md-icon class="md-whiteframe-1dp recover-logo">lock_open</md-icon>
+    </div>
+    <div flex="40" layout="column" layout-align="center center">
+        <md-input-container>
+            <label>User Name</label>
+            <md-icon aria-label="User Name">assignment_ind</md-icon>
+            <input type="text" name="userName" ng-model="$ctrl.recoverCriteria.userName" required>
+            <div ng-messages="recoverForm.userName.$error">
+                <div ng-message="valid">Error: The entered value is not valid</div>
+                <div ng-message="required">Error: Enter your employeee Id</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex="20" layout="column" layout-align="center center">
+        <section layout="row" layout-align-xs="center center">
+            <md-button type="submit" class="md-raised md-primary">
+                Submit</md-button>
+            <md-button class="md-raised" ng-click="$ctrl.onCancel(recoverForm)">Cancel</md-button>
+        </section>
+    </div>
+    <div flex="10" layout="column" layout-align="center center">
+        <section layout="row" layout-align-xs="center center" ui-sref="login">
+            <md-button class="md-primary forgot-button">
+                <md-icon aria-label="Sign In">account_circle</md-icon>Sign In</md-button>
+        </section>
+    </div>
+</form>

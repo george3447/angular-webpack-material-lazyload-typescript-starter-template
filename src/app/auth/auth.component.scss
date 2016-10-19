@@ -1,0 +1,10 @@
+auth-component {
+    .main-container {
+        height: 75%;
+    }
+    @media (max-width: 599px) {
+        .main-container {
+            height: 100%;
+        }
+    }
+}

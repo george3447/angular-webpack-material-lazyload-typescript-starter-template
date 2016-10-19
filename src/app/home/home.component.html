@@ -1,0 +1,9 @@
+<nav state="$ctrl.selectedState"></nav>
+<div layout="row" flex>
+    <side-menu layout="row" states="$ctrl.states" on-select-state="$ctrl.selectState(selectedState)"></side-menu>
+    <div layout="column" flex id="content">
+        <md-content layout="column" flex class="md-padding white-con">
+            <ui-view layout="column" flex />
+        </md-content>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+    @import "../../../../assets/css/variables";
+    side-menu {
+        md-sidenav {
+            position: relative;
+            md-list {
+                padding: 0;
+            }
+            md-list-item {
+                border: 1px solid $accentColorLight;
+                border-width: 0 0 1px;
+                min-height: 40px;
+                flex-direction: column;
+                flex-wrap: wrap;
+                align-items: stretch;
+                justify-content: space-between;
+                &.opened {
+                    md-list {
+                        transform: scaleY(1);
+                    }
+                }
+                md-list {
+                    transform: scaleY(0);
+                    transform-origin: top;
+                    transition: transform 0.26s ease;
+                    .md-button {
+                        text-transform: capitalize;
+                        padding-left: 20px;
+                        &:not([disabled]):hover,
+                        &.active:not([disabled]) {
+                            background-color: $accentColorLight;
+                            color: $accentColor;
+                        }
+                    }
+                }
+                &::before {
+                    min-height: 40px;
+                    content: initial;
+                }
+                .md-button {
+                    height: 40px;
+                    width: 100%;
+                    text-align: left;
+                    margin: 0;
+                    padding-left: 10px;
+                    border-radius: 0;
+                    &:not([disabled]):hover,
+                    &.active:not([disabled]) {
+                        background-color: lighten($color: $accentColorLight, $amount: 5);
+                        color: $accentColor;
+                    }
+                    md-icon {
+                        position: absolute;
+                        top: 8px;
+                        right: 10px;
+                    }
+                    .md-list-item-inner {
+                        &::before {
+                            min-height: 38px;
+                        }
+                    }
+                }
+            }
+        }
+    }

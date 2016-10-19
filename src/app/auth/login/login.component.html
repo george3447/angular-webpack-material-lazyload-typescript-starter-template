@@ -1,0 +1,41 @@
+<form name="loginForm" layout="column" layout-align="center center" flex ng-submit="$ctrl.onSubmit(loginForm.$valid)" novalidate>
+    <div flex="30" layout="column" layout-align="center center" class="md-display-2">
+        <md-icon class="md-whiteframe-1dp login-logo">account_circle</md-icon>
+    </div>
+    <div flex="40" layout="column" layout-align="center center">
+        <md-input-container>
+            <label>User Name</label>
+            <md-icon aria-label="User Name">assignment_ind</md-icon>
+            <input type="text" name="userName" ng-model="$ctrl.loginCriteria.userName" required>
+            <div ng-messages="loginForm.userName.$error">
+                <div ng-message="valid">Error: The entered value is not valid</div>
+                <div ng-message="required">Error: Enter your employeee Id</div>
+            </div>
+        </md-input-container>
+
+
+        <md-input-container>
+            <label>Password</label>
+            <md-icon aria-label="Password">lock</md-icon>
+            <input type="password" name="password" ng-model="$ctrl.loginCriteria.password" required>
+            <div ng-messages="loginForm.password.$error">
+                <div ng-message="valid">Error: The entered value is not valid</div>
+                <div ng-message="required">Error: Enter your password</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div flex="20" layout="column" layout-align="center center">
+        <section layout="row" layout-align-xs="center center">
+            <md-button type="submit" class="md-raised md-primary">
+                Submit</md-button>
+            <md-button class="md-raised" ng-click="$ctrl.onCancel(loginForm)">Cancel</md-button>
+        </section>
+    </div>
+    <div flex="10" layout="column" layout-align="center center">
+        <section layout="row" layout-align-xs="center center">
+            <md-button class="md-primary forgot-button" ui-sref="recover">
+                <md-icon aria-label="Forgot Password">lock_open</md-icon>Forgot Password</md-button>
+        </section>
+    </div>
+
+</form>

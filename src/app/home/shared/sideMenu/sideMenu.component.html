@@ -1,0 +1,16 @@
+<md-sidenav layout="column" md-is-open="$ctrl.isOpen" md-is-locked-open="$ctrl.isLockedOpen && $mdMedia('gt-md')" md-disable-backdrop class="md-sidenav-left md-whiteframe-z2" md-component-id="mdSideNavSideMenu">
+    <md-list>
+        <md-list-item ng-repeat="state in $ctrl.states" ng-class="{opened: state.data.isOpen}">
+            <md-button class="md-accent" ui-sref-active="active" ui-sref="{{state.name}}" ng-if="!state.abstract"> {{state.data.navTitle}}
+            </md-button>
+            <md-button class="md-accent" ng-class="{active: state.data.isActive}" ng-click="$ctrl.onMenuClick(state)" ng-if="state.abstract"> {{state.data.navTitle}}
+                <md-icon md-font-icon="material-icons">{{state.data.isOpen ? 'keyboard_arrow_up':'keyboard_arrow_down'}}</md-icon>
+            </md-button>
+            <md-list ng-if="state.data && state.data.childrens && state.data.childrens.length > 0 && state.data.isOpen">
+                <md-list-item ng-repeat="child in state.data.childrens">
+                    <md-button class="md-accent" ui-sref-active="active" ng-class="{active: child.data.isActive}" ui-sref="{{child.name}}"> {{child.data.navTitle}}</md-button>
+                </md-list-item>
+            </md-list>
+        </md-list-item>
+    </md-list>
+</md-sidenav>

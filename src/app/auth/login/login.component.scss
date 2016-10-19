@@ -1,0 +1,22 @@
+    @import "../../../assets/css/variables";
+    @import "../../../assets/css/mixins";
+    login {
+        .login-logo {
+            @include custom-icon-size(72px);
+            color: $accentColor;
+            border-radius: 100%;
+        }
+        .md-button.forgot-button {
+            text-transform: capitalize;
+            &:not([disabled]):hover,
+            &.active:not([disabled]) {
+                text-decoration: underline;
+                background-color: transparent;
+            }
+            md-icon {
+                font-size: 16px;
+                @include custom-icon-size(18px);
+                width: 24px;
+            }
+        }
+    }

@@ -1,0 +1,28 @@
+{
+    "version": "0.1.0",
+    "command": "npm",
+    "isShellCommand": true,
+    "suppressTaskName": true,
+    "windows": {
+        "command": "npm.cmd"
+    },
+    "tasks": [
+        {
+            "taskName": "build",
+            "isBuildCommand": true,
+            "showOutput": "silent",
+            "args": [
+                "run",
+                "build"
+            ]
+        },
+        {
+            "taskName": "distLocal",
+            "isTestCommand": true,
+            "args": [
+                "run",
+                "distLocal"
+            ]
+        }
+    ]
+}
