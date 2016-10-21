@@ -11,10 +11,6 @@ var CompressionPlugin = require("compression-webpack-plugin");
 const chalk = require('chalk');
 const moment = require('moment');
 
-/**
- * Env
- * Get npm lifecycle event to identify the environment
- */
 var ENV = process.env.npm_lifecycle_event;
 
 module.exports = function makeWebpackConfig() {
@@ -58,7 +54,7 @@ module.exports = function makeWebpackConfig() {
 
         // Output path from the view of the page
         // Uses webpack-dev-server in development
-        publicPath: '/angular-webpack-material-lazyload-typescript-starter-template/',
+        publicPath: 'http://localhost:75/', // '/angular-webpack-material-lazyload-typescript-starter-template/',
 
         // Filename for entry points
         // Only adds hash in build mode
@@ -74,8 +70,11 @@ module.exports = function makeWebpackConfig() {
 
     // Initialize module
     config.module = {
-        preLoaders: [],
-        loaders: [{
+        rules: [{
+                test: /\.ts$/,
+                enforce: "pre",
+                loader: "tslint"
+            }, {
                 test: /\.ts$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/
@@ -83,23 +82,17 @@ module.exports = function makeWebpackConfig() {
                 // CSS LOADER
                 // Reference: https://github.com/webpack/css-loader
                 // Allow loading css through js
-                //
-                // Reference: https://github.com/postcss/postcss-loader
-                // Postprocess your css with PostCSS plugins
+
                 test: /\.css$/,
-                // Reference: https://github.com/webpack/extract-text-webpack-plugin
-                // Extract css files in production builds
-                //
+
                 // Reference: https://github.com/webpack/style-loader
                 // Use style-loader in development.
-                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css' })
             },
 
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', // The backup style loader
-                    'css!sass'
-                )
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css!sass' })
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
@@ -127,6 +120,23 @@ module.exports = function makeWebpackConfig() {
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
     // Render index.html
     config.plugins.push(
+
+        new webpack.LoaderOptionsPlugin({
+            // test: /\.xxx$/, // may apply this only for some modules                                                                                                               
+            options: {
+                tslint: {
+                    emitErrors: true,
+                    failOnHint: true,
+                },
+                sassLoader: {
+                    //includePaths: ['./src/assets/css']
+                },
+                context: '',
+                resolve: {
+
+                }
+            }
+        }),
 
         new webpack.DefinePlugin({
             __ENV: JSON.stringify(ENV)
@@ -190,7 +200,7 @@ module.exports = function makeWebpackConfig() {
     );
 
     config.resolve = {
-        extensions: [".webpack.js", ".web.js", '', '.ts', '.tsx', '.js', '.jsx', '.json']
+        extensions: [".webpack.js", ".web.js", '.ts', '.tsx', '.js', '.jsx', '.json']
     };
 
     return config;

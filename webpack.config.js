@@ -76,11 +76,12 @@ module.exports = function makeWebpackConfig() {
 
     // Initialize module
     config.module = {
-        preLoaders: [{
-            test: /\.ts$/,
-            loader: "tslint"
-        }],
-        loaders: [{
+        rules: [{
+                test: /\.ts$/,
+                enforce: "pre",
+                loader: "tslint"
+            },
+            {
                 test: /\.ts$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/
@@ -93,14 +94,12 @@ module.exports = function makeWebpackConfig() {
 
                 // Reference: https://github.com/webpack/style-loader
                 // Use style-loader in development.
-                loader: ExtractTextPlugin.extract('style-loader?sourceMap', 'css-loader?sourceMap')
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css?sourceMap' })
             },
 
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', // The backup style loader
-                    'css?sourceMap!sass?sourceMap'
-                )
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css!sass?sourceMap' })
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
@@ -126,6 +125,23 @@ module.exports = function makeWebpackConfig() {
 
     config.plugins.push(
 
+        new webpack.LoaderOptionsPlugin({
+            // test: /\.xxx$/, // may apply this only for some modules                                                                                                               
+            options: {
+                tslint: {
+                    emitErrors: true,
+                    failOnHint: true,
+                },
+                sassLoader: {
+                    //includePaths: ['./src/assets/css']
+                },
+                context: '',
+                resolve: {
+
+                }
+            }
+        }),
+
         new webpack.DefinePlugin({
             __ENV: JSON.stringify(ENV)
         }),
@@ -147,9 +163,9 @@ module.exports = function makeWebpackConfig() {
         // Reference: https://github.com/webpack/extract-text-webpack-plugin
         // Extract css files
         // Disabled when in test mode or not in build mode
-        new ExtractTextPlugin("assets/css/[name].css", { allChunks: false }),
+        new ExtractTextPlugin({ filename: "assets/css/[name].css", allChunks: false }),
 
-        new webpack.optimize.CommonsChunkPlugin( /* chunkName= */ "vendor", /* filename= */ "assets/js/[name].js")
+        new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'assets/js/[name].js' })
     );
 
 
@@ -165,24 +181,7 @@ module.exports = function makeWebpackConfig() {
     };
 
     config.resolve = {
-        extensions: [".webpack.js", ".web.js", '', '.ts', '.tsx', '.js', '.jsx', '.json']
+        extensions: [".webpack.js", ".web.js", '.ts', '.tsx', '.js', '.jsx', '.json']
     };
-
-    config.tslint = {
-        // configuration: {
-        //     // rules: {
-        //     //     quotemark: [true, "double"]
-        //     // }
-        // },
-
-        // tslint errors are displayed by default as warnings 
-        // set emitErrors to true to display them as errors 
-        emitErrors: true,
-
-        // tslint does not interrupt the compilation by default 
-        // if you want any file with tslint errors to fail 
-        // set failOnHint to true 
-        failOnHint: true,
-    }
     return config;
 }();
