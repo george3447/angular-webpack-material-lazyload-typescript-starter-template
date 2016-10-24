@@ -1,14 +1,14 @@
 import { IHttpService, IHttpPromise } from 'angular';
 import HelperService from './helper.service';
 
-export interface IURLConfig {
+export interface APIEndPoint {
     build: string;
     dist: string;
     distDev: string;
     distLocal: string;
 }
 
-const urlConfig: IURLConfig = {
+const apiEndPoint: APIEndPoint = {
     build: "https://api.myjson.com",
     dist: "https://api.myjson.com",
     distDev: "https://api.myjson.com",
@@ -17,7 +17,7 @@ const urlConfig: IURLConfig = {
 
 class DataService {
 
-    private baseURL: string = urlConfig[__ENV];
+    private baseURL: string = apiEndPoint[__ENV];
 
     static $inject = ['$http', 'HelperService'];
 

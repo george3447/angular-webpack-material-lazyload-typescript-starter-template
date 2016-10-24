@@ -11,6 +11,13 @@ var CompressionPlugin = require("compression-webpack-plugin");
 const chalk = require('chalk');
 const moment = require('moment');
 
+const hostEndPoint = {
+    build: "http://localhost:8080/",
+    dist: "https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/",
+    distDev: "http://localhost:75/",
+    distLocal: "http://localhost:75/"
+};
+
 var ENV = process.env.npm_lifecycle_event;
 
 module.exports = function makeWebpackConfig() {
@@ -54,7 +61,7 @@ module.exports = function makeWebpackConfig() {
 
         // Output path from the view of the page
         // Uses webpack-dev-server in development
-        publicPath: '/angular-webpack-material-lazyload-typescript-starter-template/',
+        publicPath: hostEndPoint[ENV],
 
         // Filename for entry points
         // Only adds hash in build mode
@@ -122,6 +129,7 @@ module.exports = function makeWebpackConfig() {
     config.plugins.push(
 
         new webpack.LoaderOptionsPlugin({
+            minimize: true,
             // test: /\.xxx$/, // may apply this only for some modules                                                                                                               
             options: {
                 tslint: {
