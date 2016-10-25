@@ -1,16 +1,15 @@
-'use strict';
-
-// Modules
-var webpack = require('webpack');
-//var autoprefixer = require('autoprefixer');
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CompressionPlugin = require("compression-webpack-plugin");
-
+const webpack = require('webpack');
 const chalk = require('chalk');
 const moment = require('moment');
 
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+
+const fileName = "[name].[chunkhash]";
+let ENV = process.env.npm_lifecycle_event;
 const hostEndPoint = {
     build: "http://localhost:8080/",
     dist: "https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/",
@@ -18,24 +17,9 @@ const hostEndPoint = {
     distLocal: "http://localhost:75/"
 };
 
-var ENV = process.env.npm_lifecycle_event;
+const config = module.exports = {
 
-module.exports = function makeWebpackConfig() {
-    /**
-     * Config
-     * Reference: http://webpack.github.io/docs/configuration.html
-     * This is the object where all configuration gets set
-     */
-    var config = {};
-
-    /**
-     * Entry
-     * Reference: http://webpack.github.io/docs/configuration.html#entry
-     * Should be an empty object if it's generating a test build
-     * Karma will set this when it's a test build
-     */
-    config.entry = {
-        app: './src/app/app.module.ts',
+    entry: {
         vendor: [
             'angular',
             'angular-aria',
@@ -46,37 +30,19 @@ module.exports = function makeWebpackConfig() {
             'angular-ui-router',
             'rxjs',
             'oclazyload'
-        ]
-    };
+        ],
+        app: './src/app/app.module.ts'
 
-    /**
-     * Output
-     * Reference: http://webpack.github.io/docs/configuration.html#output
-     * Should be an empty object if it's generating a test build
-     * Karma will handle setting it up for you when it's a test build
-     */
-    config.output = {
-        // Absolute output directory
-        path: __dirname + '/dist',
+    },
 
-        // Output path from the view of the page
-        // Uses webpack-dev-server in development
+    output: {
+        path: __dirname + '/' + ENV,
         publicPath: hostEndPoint[ENV],
+        filename: `assets/js/${fileName}.js`,
+        chunkFilename: `assets/js/${fileName}.js`
+    },
 
-        // Filename for entry points
-        // Only adds hash in build mode
-        filename: 'assets/js/[name].[hash].js',
-
-        // Filename for non-entry points
-        // Only adds hash in build mode
-        chunkFilename: 'assets/js/[name].[hash].js'
-
-    };
-
-    //config.devtool = 'eval';
-
-    // Initialize module
-    config.module = {
+    module: {
         rules: [{
                 test: /\.ts$/,
                 enforce: "pre",
@@ -86,14 +52,7 @@ module.exports = function makeWebpackConfig() {
                 loader: 'ts-loader',
                 exclude: /node_modules/
             }, {
-                // CSS LOADER
-                // Reference: https://github.com/webpack/css-loader
-                // Allow loading css through js
-
                 test: /\.css$/,
-
-                // Reference: https://github.com/webpack/style-loader
-                // Use style-loader in development.
                 loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css' })
             },
 
@@ -103,113 +62,63 @@ module.exports = function makeWebpackConfig() {
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
-                loader: 'file-loader?name=assets/images/[name].[hash].[ext]'
+                loader: `file-loader?name=assets/images/[name].[hash].[ext]`
             },
             {
-                // HTML LOADER
-                // Reference: https://github.com/webpack/raw-loader
-                // Allow loading html through js
                 test: /\.html$/,
                 loader: 'html?interpolate'
             }
         ]
-    };
+    },
 
-    /**
-     * Plugins
-     * Reference: http://webpack.github.io/docs/configuration.html#plugins
-     * List: http://webpack.github.io/docs/list-of-plugins.html
-     */
-    config.plugins = [];
-
-    // Skip rendering index.html in test mode
-    //if (!isTest) {
-    // Reference: https://github.com/ampedandwired/html-webpack-plugin
-    // Render index.html
-    config.plugins.push(
-
+    plugins: [
+        new CleanWebpackPlugin([ENV]),
         new webpack.LoaderOptionsPlugin({
             minimize: true,
-            // test: /\.xxx$/, // may apply this only for some modules                                                                                                               
             options: {
                 tslint: {
                     emitErrors: true,
                     failOnHint: true,
                 },
-                sassLoader: {
-                    //includePaths: ['./src/assets/css']
-                },
+                sassLoader: {},
                 context: '',
-                resolve: {
-
-                }
+                resolve: {}
             }
         }),
-
         new webpack.DefinePlugin({
             __ENV: JSON.stringify(ENV)
         }),
-
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)' + ' on ' + moment().format('MMMM Do YYYY, h:mm a') +
                 ' ',
             clear: false
         }),
-
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-            inject: 'body'
-        }),
-        // Reference: https://github.com/webpack/extract-text-webpack-plugin
-        // Extract css files
-        // Disabled when in test mode or not in build mode
-        new ExtractTextPlugin("assets/css/[name].[hash].css"),
-
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "vendor",
-
-            filename: "assets/js/[name].[hash].js",
-
-            // (Give the chunk a different name)
-
-            minChunks: Infinity
-                // (with more entries, this ensures that no other module
-                //  goes into the vendor chunk)
-        }),
-
-
-        // Add build specific plugins
-        // if (isProd) {
-        // config.plugins.push(
-        // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
-        // Only emit files when there are no errors
         new webpack.NoErrorsPlugin(),
-
-        // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-        // Dedupe modules in the output
+        new ExtractTextPlugin(`assets/css/${fileName}.css`),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ["vendor", "manifest"]
+        }),
         new webpack.optimize.DedupePlugin(),
-
-        // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-        // Minify all javascript, switch loaders to minimizing mode
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             },
             sourceMap: false
         }),
-
         new CompressionPlugin({
             asset: "[path].gz[query]",
             algorithm: "gzip",
             test: /\.js$|\.css$|\.html$/,
             threshold: 10240,
             minRatio: 0.8
-        })
-    );
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+            inject: 'body'
+        }),
+    ],
 
-    config.resolve = {
+    resolve: {
         extensions: [".webpack.js", ".web.js", '.ts', '.tsx', '.js', '.jsx', '.json']
-    };
-
-    return config;
-}();
+    }
+};

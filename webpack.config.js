@@ -1,16 +1,15 @@
 'use strict';
 
 // Modules
-var webpack = require('webpack');
-//var autoprefixer = require('autoprefixer');
-var ProgressBarPlugin = require('progress-bar-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+let webpack = require('webpack');
+let ProgressBarPlugin = require('progress-bar-webpack-plugin');
+let HtmlWebpackPlugin = require('html-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const chalk = require('chalk');
 const moment = require('moment');
 
-var ENV = process.env.npm_lifecycle_event;
+let ENV = process.env.npm_lifecycle_event;
 
 module.exports = function makeWebpackConfig() {
     /**
@@ -18,7 +17,7 @@ module.exports = function makeWebpackConfig() {
      * Reference: http://webpack.github.io/docs/configuration.html
      * This is the object where all configuration gets set
      */
-    var config = {};
+    let config = {};
 
     /**
      * Entry
