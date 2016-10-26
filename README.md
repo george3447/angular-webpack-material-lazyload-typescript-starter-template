@@ -13,11 +13,7 @@ Angular starter template using typescript, angular-material, ui-router, oclazylo
 * Lazyloaded components using angular ui router 1.0. and oclazyload 
 * Communication between components using rxjs
 * Support sass or css for stylesheets
-* Development
-  * Development server
-  * Hot Module Replacement development server 
 * Production
-  * Initial data inlined in page
   * Long Term Caching through file hashes enabled
   * Minimized and gzipped CSS and javascript
 
