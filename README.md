@@ -47,5 +47,4 @@ $ npm run dist
 
 ## License
 
-Copyright (c) 2016 Georgekutty Antony
 MIT (http://www.opensource.org/licenses/mit-license.php)
