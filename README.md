@@ -19,7 +19,7 @@ Angular starter template using typescript, angular-material, ui-router, oclazylo
 
 ## Installation
 
-####1. Clone this project or Download the ZIP file
+####1. Clone this project or download the ZIP file
 
 ```sh
 $ https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.git
