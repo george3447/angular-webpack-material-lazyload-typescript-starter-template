@@ -1,11 +1,15 @@
 import { IQService } from 'angular';
 import { Transition } from 'angular-ui-router';
 
+import LoaderService from './loader/loader.service';
+
 export function loadLazyState(callback: (resolve: angular.IQResolveReject<{}>, $ocLazyLoad: any) => void) {
     return (transition: Transition) => {
         let injector = transition.injector();
         let $ocLazyLoad = injector.get('$ocLazyLoad');
         let $q: IQService = injector.get('$q');
+        let loaderService: LoaderService = injector.get('LoaderService');
+        if (loaderService && loaderService.show) { loaderService.show(); }
         return $q((resolve) => callback(resolve, $ocLazyLoad));
     };
 }

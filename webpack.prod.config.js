@@ -2,16 +2,15 @@ const webpack = require('webpack');
 const chalk = require('chalk');
 const moment = require('moment');
 
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const fileName = "[name].[chunkhash]";
 let ENV = process.env.npm_lifecycle_event;
 const hostEndPoint = {
-    build: "http://localhost:8080/",
     dist: "https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/",
     distDev: "http://localhost:75/",
     distLocal: "http://localhost:75/"
@@ -46,19 +45,15 @@ const config = module.exports = {
         rules: [{
                 test: /\.ts$/,
                 enforce: "pre",
-                loader: "tslint"
+                loader: "tslint-loader"
             }, {
                 test: /\.ts$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/
-            }, {
-                test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css' })
             },
-
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css!sass' })
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader' })
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
@@ -66,7 +61,7 @@ const config = module.exports = {
             },
             {
                 test: /\.html$/,
-                loader: 'html?interpolate'
+                loader: 'html-loader?interpolate'
             }
         ]
     },

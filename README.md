@@ -18,7 +18,7 @@
 * Webpack 2.0 based bundle system 
 * Lazyloaded components using angular ui router 1.0. and oclazyload 
 * Communication between components using rxjs
-* Support sass or css for stylesheets
+* Supports SASS
 * Production
   * Long Term Caching through file hashes enabled
   * Minimized and gzipped CSS and javascript

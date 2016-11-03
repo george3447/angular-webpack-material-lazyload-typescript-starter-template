@@ -1,32 +1,15 @@
-'use strict';
-
-// Modules
-let webpack = require('webpack');
-let ProgressBarPlugin = require('progress-bar-webpack-plugin');
-let HtmlWebpackPlugin = require('html-webpack-plugin');
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const webpack = require('webpack');
 const chalk = require('chalk');
 const moment = require('moment');
 
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 let ENV = process.env.npm_lifecycle_event;
+const config = module.exports = {
 
-module.exports = function makeWebpackConfig() {
-    /**
-     * Config
-     * Reference: http://webpack.github.io/docs/configuration.html
-     * This is the object where all configuration gets set
-     */
-    let config = {};
-
-    /**
-     * Entry
-     * Reference: http://webpack.github.io/docs/configuration.html#entry
-     * Should be an empty object if it's generating a test build
-     * Karma will set this when it's a test build
-     */
-    config.entry = {
-        app: './src/app/app.module.ts',
+    entry: {
         vendor: [
             'angular',
             'angular-aria',
@@ -37,150 +20,78 @@ module.exports = function makeWebpackConfig() {
             'angular-ui-router',
             'rxjs',
             'oclazyload'
-        ]
-    };
+        ],
+        app: './src/app/app.module.ts',
+    },
 
-    /**
-     * Output
-     * Reference: http://webpack.github.io/docs/configuration.html#output
-     * Should be an empty object if it's generating a test build
-     * Karma will handle setting it up for you when it's a test build
-     */
-    config.output = {
-        // Absolute output directory
+    output: {
         path: __dirname + '/dist',
-
-        // Output path from the view of the page
-        // Uses webpack-dev-server in development
         publicPath: 'http://localhost:8080/',
-
-        // Filename for entry points
-        // Only adds hash in release mode
         filename: 'assets/js/[name].js',
-
-        // Filename for non-entry points
-        // Only adds hash in release mode
         chunkFilename: 'assets/js/[name].js'
-    };
+    },
 
+    devtool: 'source-map',
 
-    config.devtool = 'source-map';
-
-    /**
-     * Loaders
-     * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
-     * List: http://webpack.github.io/docs/list-of-loaders.html
-     * This handles most of the magic responsible for converting modules
-     */
-
-    // Initialize module
-    config.module = {
+    module: {
         rules: [{
                 test: /\.ts$/,
                 enforce: "pre",
-                loader: "tslint"
+                loader: "tslint-loader"
             },
             {
                 test: /\.ts$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/
-            }, {
-                // CSS LOADER
-                // Reference: https://github.com/webpack/css-loader
-                // Allow loading css through js
-
-                test: /\.css$/,
-
-                // Reference: https://github.com/webpack/style-loader
-                // Use style-loader in development.
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css?sourceMap' })
             },
-
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style', loader: 'css!sass?sourceMap' })
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap!sass-loader' })
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
                 loader: 'file-loader?name=assets/images/[name].[ext]'
             },
             {
-                // HTML LOADER
-                // Reference: https://github.com/webpack/html-loader
-                // Allow loading html through js
                 test: /\.html$/,
-                loader: 'html?interpolate'
+                loader: 'html-loader?interpolate'
             }
         ],
 
-    };
+    },
 
-    /**
-     * Plugins
-     * Reference: http://webpack.github.io/docs/configuration.html#plugins
-     * List: http://webpack.github.io/docs/list-of-plugins.html
-     */
-    config.plugins = [];
-
-    config.plugins.push(
-
+    plugins: [
         new webpack.LoaderOptionsPlugin({
-            // test: /\.xxx$/, // may apply this only for some modules                                                                                                               
             options: {
                 tslint: {
                     emitErrors: true,
                     failOnHint: true,
                 },
-                sassLoader: {
-                    //includePaths: ['./src/assets/css']
-                },
+                sassLoader: {},
                 context: '',
-                resolve: {
-
-                }
+                resolve: {}
             }
         }),
-
         new webpack.DefinePlugin({
             __ENV: JSON.stringify(ENV)
         }),
-
         new ProgressBarPlugin({
-            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)' + ' on ' + moment().format('MMMM Do YYYY, h:mm a') +
-                ' ',
+            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)' + ' on ' + moment().format('MMMM Do YYYY, h:mm a') + ' ',
             clear: false
         }),
-
-        // Skip rendering index.html in test mode
-        //if (!isTest) {
-        // Reference: https://github.com/ampedandwired/html-webpack-plugin
-        // Render index.html
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: 'body'
         }),
-        // Reference: https://github.com/webpack/extract-text-webpack-plugin
-        // Extract css files
-        // Disabled when in test mode or not in build mode
         new ExtractTextPlugin({ filename: "assets/css/[name].css", allChunks: false }),
-
         new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'assets/js/[name].js' })
-    );
-
-
-    /**
-     * Dev server configuration
-     * Reference: http://webpack.github.io/docs/configuration.html#devserver
-     * Reference: http://webpack.github.io/docs/webpack-dev-server.html
-     */
-    config.devServer = {
+    ],
+    devServer: {
         contentBase: './src',
         stats: 'minimal',
         historyApiFallback: true
-    };
-
-    config.resolve = {
+    },
+    resolve: {
         extensions: [".webpack.js", ".web.js", '.ts', '.tsx', '.js', '.jsx', '.json']
-    };
-    return config;
-}();
+    }
+};
