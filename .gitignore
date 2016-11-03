@@ -1,4 +1,4 @@
-node_modules/
-typings/
-distLocal/
-distDev/
+node_modules
+.vscode
+distLocal
+distDev
