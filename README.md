@@ -1,7 +1,13 @@
-![alt text][logo]
- [logo]: https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template/raw/master/src/assets/images/logo.png 
-# Angular Webpack Material Lazyload Typescript Starter Template
-Angular starter template using typescript, angular-material, ui-router, oclazyload with webpack support.
+<p align="center">
+  <a href="https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/">
+    <img alt="Yarn" src="https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template/raw/master/src/assets/images/logo.png " width="300">
+  </a>
+</p>
+
+<p align="center">
+    Angular starter template using typescript, angular-material, ui-router, oclazyload with webpack support.
+</p>
+---
 
 ### Demo : https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/
 
@@ -22,7 +28,7 @@ Angular starter template using typescript, angular-material, ui-router, oclazylo
 ####1. Clone this project or Download the ZIP file
 
 ```sh
-$ https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.git
+$ git clone https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.git
 ```
 
 ####2.  Make sure you have [node](https://nodejs.org/en/download/) and  [npm](https://www.npmjs.org/) installed.

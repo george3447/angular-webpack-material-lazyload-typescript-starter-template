@@ -1,5 +1,3 @@
-/// <reference path="typings/index.d.ts" />
-
 declare var __ENV: string;
 declare var angular;
 declare var require: {
