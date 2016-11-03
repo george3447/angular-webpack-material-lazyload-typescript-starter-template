@@ -25,7 +25,7 @@
 
 ## Installation
 
-####1. Clone this project or Download the ZIP file
+####1. Clone this project or download the ZIP file
 
 ```sh
 $ git clone https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.git
@@ -53,5 +53,4 @@ $ npm run dist
 
 ## License
 
-Copyright (c) 2016 Georgekutty Antony
 MIT (http://www.opensource.org/licenses/mit-license.php)
