@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/">
-    <img alt="Yarn" src="https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template/raw/master/src/assets/images/logo.png " width="300">
+    <img alt="angular-webpack-material-lazyload-typescript-starter-template" src="https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template/raw/master/src/assets/images/logo.png?raw=true" width="300">
   </a>
 </p>
 
