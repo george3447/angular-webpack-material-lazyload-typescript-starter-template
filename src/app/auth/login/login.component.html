@@ -4,12 +4,12 @@
     </div>
     <div flex="40" layout="column" layout-align="center center">
         <md-input-container>
-            <label>User Name One</label>
+            <label>User Name</label>
             <md-icon aria-label="User Name">assignment_ind</md-icon>
             <input type="text" name="userName" ng-model="$ctrl.loginCriteria.userName" required>
             <div ng-messages="loginForm.userName.$error">
                 <div ng-message="valid">Error: The entered value is not valid</div>
-                <div ng-message="required">Error: Enter your employeee Id</div>
+                <div ng-message="required">Error: Enter your user name</div>
             </div>
         </md-input-container>
 
