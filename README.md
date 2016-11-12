@@ -16,7 +16,7 @@
 ### Demo : https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/
 
 ## Features
-
+---
 * Angular 1.5 component architecture with typescript
 * Integrated with angular material 1.0
 * Webpack 2.0 based bundle system 
@@ -28,21 +28,21 @@
   * Minimized and gzipped CSS and javascript
 
 ## Installation
-
-####1. Clone this project or download the ZIP file
+---
+#### 1. Clone this project or download the ZIP file
 
 ```sh
 $ git clone https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.git
 ```
 
-####2.  Make sure you have [node](https://nodejs.org/en/download/) and  [npm](https://www.npmjs.org/) installed.
+#### 2.  Make sure you have [node](https://nodejs.org/en/download/) and  [npm](https://www.npmjs.org/) installed.
  
-####3. On the command prompt run the following commands
+#### 3. On the command prompt run the following commands
 
 ```sh
 $ cd `project-directory`
 ```
-
+- For installing the dependencies
 ```sh
 $ npm install 
 ```
@@ -56,5 +56,13 @@ $ npm run dist
 ```
 
 ## License
+---
+#### The MIT License (MIT)
+Copyright (c) 2016 Georgekutty Antony
 
-MIT (http://www.opensource.org/licenses/mit-license.php)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
