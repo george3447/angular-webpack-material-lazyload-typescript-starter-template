@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const moment = require('moment');
+const path = require('path');
 
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -21,11 +22,11 @@ const config = module.exports = {
             'rxjs',
             'oclazyload'
         ],
-        app: './src/app/app.module.ts',
+        app: './src/app/app.module.ts'
     },
 
     output: {
-        path: __dirname + '/dist',
+        path: path.join(__dirname, '/dist'),
         publicPath: 'http://localhost:8080/',
         filename: 'assets/js/[name].js',
         chunkFilename: 'assets/js/[name].js'
@@ -56,7 +57,7 @@ const config = module.exports = {
                 test: /\.html$/,
                 loader: 'html-loader?interpolate'
             }
-        ],
+        ]
 
     },
 
@@ -65,7 +66,7 @@ const config = module.exports = {
             options: {
                 tslint: {
                     emitErrors: true,
-                    failOnHint: true,
+                    failOnHint: true
                 },
                 sassLoader: {},
                 context: '',
@@ -76,7 +77,7 @@ const config = module.exports = {
             __ENV: JSON.stringify(ENV)
         }),
         new ProgressBarPlugin({
-            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)' + ' on ' + moment().format('MMMM Do YYYY, h:mm a') + ' ',
+            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds) on ' + moment().format('MMMM Do YYYY, h:mm a') + ' ',
             clear: false
         }),
         new HtmlWebpackPlugin({

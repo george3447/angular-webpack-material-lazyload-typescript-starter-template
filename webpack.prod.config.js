@@ -35,7 +35,7 @@ const config = module.exports = {
     },
 
     output: {
-        path: __dirname + '/' + ENV,
+        path: (__dirname, '/', ENV),
         publicPath: hostEndPoint[ENV],
         filename: `assets/js/${fileName}.js`,
         chunkFilename: `assets/js/${fileName}.js`
@@ -73,7 +73,7 @@ const config = module.exports = {
             options: {
                 tslint: {
                     emitErrors: true,
-                    failOnHint: true,
+                    failOnHint: true
                 },
                 sassLoader: {},
                 context: '',
@@ -84,7 +84,7 @@ const config = module.exports = {
             __ENV: JSON.stringify(ENV)
         }),
         new ProgressBarPlugin({
-            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)' + ' on ' + moment().format('MMMM Do YYYY, h:mm a') +
+            format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds) on ' + moment().format('MMMM Do YYYY, h:mm a') +
                 ' ',
             clear: false
         }),
@@ -110,7 +110,7 @@ const config = module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: 'body'
-        }),
+        })
     ],
 
     resolve: {
