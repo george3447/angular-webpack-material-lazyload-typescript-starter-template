@@ -1,3 +1,5 @@
+
+
 <p align="center">
   <a href="https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/">
     <img alt="angular-webpack-material-lazyload-typescript-starter-template" src="https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template/raw/master/src/assets/images/logo.png?raw=true" width="300">
@@ -5,8 +7,10 @@
 </p>
 
 <p align="center">
+ <a href='https://gemnasium.com/github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template'><img src="https://gemnasium.com/badges/github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.svg?style=flat-square" alt="Dependency Status" /></a></p>
+<h4 align="center">
     Angular starter template using typescript, angular-material, ui-router, oclazyload with webpack support.
-</p>
+</h4>
 ---
 
 ### Demo : https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/
