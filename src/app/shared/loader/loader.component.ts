@@ -16,12 +16,10 @@ class LoaderController implements IComponentController {
 
     private show() {
         this.isVisible = true;
-        console.log("Loader called");
     }
 
     private hide() {
         this.isVisible = false;
-        console.log("Loader invisible");
     }
 
 }

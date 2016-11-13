@@ -27,10 +27,6 @@ class RecoverController implements IComponentController {
     onSubmit(isValid: boolean) {
 
         if (isValid) {
-            console.log(this.recoverCriteria);
-            // this.sipGraphService.get(this.searchCriteria).then(() => {
-            //     this.sipResultSet = this.sipGraphService.sipResultSet;
-            // });
         }
     }
 

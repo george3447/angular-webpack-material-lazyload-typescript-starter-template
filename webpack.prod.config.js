@@ -12,7 +12,6 @@ const fileName = "[name].[chunkhash]";
 let ENV = process.env.npm_lifecycle_event;
 const hostEndPoint = {
     dist: "https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/",
-    distDev: "http://localhost:75/",
     distLocal: "http://localhost:75/"
 };
 

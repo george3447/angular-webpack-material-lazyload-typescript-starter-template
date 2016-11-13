@@ -8,7 +8,6 @@
         "display-error": "webpack --display-error-details",
         "dist": "webpack --config webpack.prod.config.js",
         "distLocal": "webpack --config webpack.prod.config.js",
-        "distDev": "webpack --config webpack.prod.config.js",
         "analyseBuild": "webpack --json > status.json",
         "test": "echo \"Error: no test specified\" && exit 1",
         "cleanjs": "rimraf src/app/*.js, src/app/**/*.js, src/app/**/**/*.js"

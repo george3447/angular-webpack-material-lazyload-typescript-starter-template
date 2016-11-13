@@ -1,17 +1,16 @@
 import { IHttpService, IHttpPromise } from 'angular';
+
 import HelperService from './helper.service';
 
 export interface APIEndPoint {
     build: string;
     dist: string;
-    distDev: string;
     distLocal: string;
 }
 
 const apiEndPoint: APIEndPoint = {
     build: "https://api.myjson.com",
     dist: "https://api.myjson.com",
-    distDev: "https://api.myjson.com",
     distLocal: "https://api.myjson.com"
 };
 

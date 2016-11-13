@@ -32,7 +32,6 @@ class LoginController implements IComponentController {
     onSubmit(isValid: boolean) {
 
         if (isValid) {
-            console.log(this.loginCriteria);
             this.authService.logIn(this.loginCriteria)
                 .then((isAuthenticard: boolean) => {
                     if (isAuthenticard) {

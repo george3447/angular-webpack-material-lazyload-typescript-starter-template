@@ -2,7 +2,6 @@ import {
     IQService,
     ICacheFactoryService,
     ITimeoutService,
-    ILogService,
     IHttpInterceptor,
     IRequestConfig,
     IPromise
@@ -17,7 +16,7 @@ export interface ICustomRequestConfig extends IRequestConfig {
 
 function loaderConfigure($httpProvider) {
 
-    const loaderInterceptor = function ($q:IQService, $cacheFactory:ICacheFactoryService, $timeout:ITimeoutService, $log:ILogService, loaderService:LoaderService): IHttpInterceptor {
+    const loaderInterceptor = function ($q: IQService, $cacheFactory: ICacheFactoryService, $timeout: ITimeoutService, loaderService: LoaderService): IHttpInterceptor {
 
         let loaderTimeout;
 
@@ -32,12 +31,9 @@ function loaderConfigure($httpProvider) {
         return config;
 
         function request(config: ICustomRequestConfig): ICustomRequestConfig {
-            $log.info('Interceptor activated');
             if (!config.ignoreLoadingBar && !isCached(config)) {
-                $log.info('Initiated logger service with ' + latencyThreshold + ' ms');
                 loaderTimeout = $timeout(() => {
                     loaderService.show();
-                    $log.info('Loader is visible now');
                 }, latencyThreshold);
             }
             return config;
@@ -45,7 +41,6 @@ function loaderConfigure($httpProvider) {
 
         function response(response: any): any {
             if (!response || !response.config) {
-                $log.error('Config object not supplied in response');
                 return response;
             }
             setComplete();
@@ -54,7 +49,6 @@ function loaderConfigure($httpProvider) {
 
         function responseError(rejection): IPromise<any> {
             if (!rejection || !rejection.config) {
-                $log.error('Config object not supplied in rejection');
                 return $q.reject(rejection);
             }
 
@@ -89,12 +83,11 @@ function loaderConfigure($httpProvider) {
         function setComplete(): void {
             $timeout.cancel(loaderTimeout);
             loaderService.hide();
-            $log.info('Loader is hidden now');
         }
 
     };
 
-    loaderInterceptor.$inject = ['$q', '$cacheFactory', '$timeout', '$log', 'LoaderService'];
+    loaderInterceptor.$inject = ['$q', '$cacheFactory', '$timeout', 'LoaderService'];
 
     $httpProvider.interceptors.push(loaderInterceptor);
 }

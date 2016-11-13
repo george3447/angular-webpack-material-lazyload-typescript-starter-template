@@ -7,11 +7,9 @@ function authRun($transitions: TransitionService, $state: StateService, authServ
             return !!(state && state.includes["home"]);
         }
     }, (transition) => {
-        console.warn("Auth: Trigered");
         let options = transition.options();
         return options && options.custom && options.custom.ignoreAuthentication ? true : authService.isAuthenticated();
     });
-    //$transitions.onSuccess({}, () => console.warn("Auth:Completed"));
 }
 
 authRun.$inject = ['$transitions', '$state', 'AuthService'];
