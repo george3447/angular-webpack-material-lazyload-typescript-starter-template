@@ -16,7 +16,7 @@
 ### Demo : https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/
 
 ## Features
----
+
 * Angular 1.5 component architecture with typescript
 * Integrated with angular material 1.0
 * Webpack 2.0 based bundle system 
@@ -28,7 +28,7 @@
   * Minimized and gzipped CSS and javascript
 
 ## Installation
----
+
 #### 1. Clone this project or download the ZIP file
 
 ```sh
@@ -56,7 +56,7 @@ $ npm run dist
 ```
 
 ## License
----
+
 #### The MIT License (MIT)
 Copyright (c) 2016 Georgekutty Antony
 
