@@ -27,8 +27,8 @@
         "rxjs": "^5.0.0-rc.2"
     },
     "devDependencies": {
-        "@types/angular": "^1.5.19",
-        "@types/angular-material": "^1.1.40",
+        "@types/angular": "^1.5.20",
+        "@types/angular-material": "^1.1.41",
         "@types/es6-shim": "^0.31.32",
         "@types/jquery": "^2.0.34",
         "@types/oclazyload": "0.0.31",
@@ -40,16 +40,16 @@
         "file-loader": "^0.9.0",
         "html-loader": "^0.4.4",
         "html-webpack-plugin": "^2.24.1",
-        "node-sass": "^3.11.3",
+        "node-sass": "^3.12.3",
         "progress-bar-webpack-plugin": "^1.9.0",
         "sass-loader": "^4.0.2",
         "style-loader": "^0.13.1",
-        "ts-loader": "^1.2.0",
+        "ts-loader": "^1.2.1",
         "tslint": "^3.15.1",
         "tslint-loader": "^2.1.5",
         "typescript": "^2.0.9",
-        "webpack": "^2.1.0-beta.25",
+        "webpack": "^2.1.0-beta.26",
         "webpack-config": "^6.2.1",
-        "webpack-dev-server": "^2.1.0-beta.10"
+        "webpack-dev-server": "^2.1.0-beta.11"
     }
 }
