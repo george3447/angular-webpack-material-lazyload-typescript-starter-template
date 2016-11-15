@@ -6,8 +6,8 @@
     "scripts": {
         "build": "webpack-dev-server --inline --hot",
         "display-error": "webpack --display-error-details",
-        "dist": "webpack --config webpack.prod.config.js",
-        "distLocal": "webpack --config webpack.prod.config.js",
+        "dist": "webpack",
+        "distLocal": "webpack",
         "analyseBuild": "webpack --json > status.json",
         "test": "echo \"Error: no test specified\" && exit 1",
         "cleanjs": "rimraf src/app/*.js, src/app/**/*.js, src/app/**/**/*.js"
@@ -49,6 +49,7 @@
         "tslint-loader": "^2.1.5",
         "typescript": "^2.0.9",
         "webpack": "^2.1.0-beta.25",
+        "webpack-config": "^6.2.1",
         "webpack-dev-server": "^2.1.0-beta.10"
     }
 }
