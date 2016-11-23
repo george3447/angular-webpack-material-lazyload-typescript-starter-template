@@ -1,4 +1,4 @@
-import { ITimeoutService, IPromise } from 'angular';
+import { IPromise } from 'angular';
 import DataService from '../../shared/data.service';
 
 export interface ILoginCriteria {
@@ -13,11 +13,11 @@ export interface IAuthInfo {
 
 class AuthService {
 
-    static $inject: Array<string> = ['$timeout', 'DataService'];
+    static $inject: Array<string> = ['DataService'];
 
     private authInfo: IAuthInfo;
 
-    constructor(private $timeout: ITimeoutService, private dataService: DataService) { }
+    constructor(private dataService: DataService) { }
 
     get(): IAuthInfo {
         return this.authInfo;

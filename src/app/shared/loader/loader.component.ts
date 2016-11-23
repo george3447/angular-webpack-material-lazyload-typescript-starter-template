@@ -10,8 +10,8 @@ class LoaderController implements IComponentController {
     private isVisible: boolean;
 
     constructor(private loaderService: LoaderService) {
-        loaderService.showRequested$.subscribe(message => this.show());
-        loaderService.hideRequested$.subscribe(() => this.hide());
+        this.loaderService.showRequested$.subscribe(() => this.show());
+        this.loaderService.hideRequested$.subscribe(() => this.hide());
     }
 
     private show() {

@@ -22,7 +22,7 @@ class DataService {
 
     constructor(private $http: IHttpService, private helperService: HelperService) { }
 
-    get(path, id?, baseURL: string = this.baseURL): IHttpPromise<{}> {
+    get(path, baseURL: string = this.baseURL): IHttpPromise<{}> {
         return this.$http.get(baseURL + path)
             .then(this.helperService.handleSuccessResponse, this.helperService.handleErrorResponse);
     }

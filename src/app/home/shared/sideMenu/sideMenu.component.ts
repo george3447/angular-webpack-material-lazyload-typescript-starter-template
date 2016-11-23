@@ -25,7 +25,7 @@ class SideMenuController implements IComponentController {
 
     ) {
 
-        sideMenuService.toggleRequested$.subscribe(callBackFunction => this.toggle(callBackFunction));
+        sideMenuService.toggleRequested$.subscribe(() => this.toggle());
         sideMenuService.menuItemSelectionRequested$.subscribe(menuItem => this.onMenuClick(menuItem));
         this.states = sideMenuService.states;
     }
@@ -44,7 +44,7 @@ class SideMenuController implements IComponentController {
         }
     }
 
-    toggle(callBackFunction?: () => any) {
+    toggle() {
         if (this.$mdMedia(sideMenuAllowedScreenSize)) {
             this.isLockedOpen = !this.isLockedOpen;
         }

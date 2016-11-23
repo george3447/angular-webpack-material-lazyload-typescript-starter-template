@@ -4,7 +4,9 @@
         "moduleResolution": "node",
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": true
+        "sourceMap": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true
     },
     "exclude": [
         "node_modules"

@@ -1,14 +1,16 @@
-const webpackConfig = require('webpack-config').default;
+const merge = require('webpack-merge');
 const target = process.env.npm_lifecycle_event;
 
-let configPath;
+let commonConfig = require('./config/webpack.common.config.js');
+let config;
 
 switch (target) {
     case 'build':
-        configPath = './config/webpack.dev.config.js';
+        config = require('./config/webpack.dev.config.js');
         break;
     default:
-        configPath = './config/webpack.prod.config.js';
+        config = require('./config/webpack.prod.config.js');
         break;
 }
-module.exports = new webpackConfig().extend(configPath);
+
+module.exports = merge(commonConfig, config);

@@ -7,12 +7,11 @@ import Shared from './shared/shared.module';
 
 
 const root = module('app', [
-    Core, //Auth,
-    Shared, // Home
+    Core,
+    Shared,
 ]).component('appComponent', AppComponent)
     .config(configure)
     .run(['$state', function ($state) {
-        //$state.go('sipGraph');
         $state.go('auth');
     }])
     .name;
