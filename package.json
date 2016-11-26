@@ -16,11 +16,11 @@
     "repository": "https://github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template",
     "license": "MIT",
     "dependencies": {
-        "angular": "^1.5.8",
-        "angular-animate": "^1.5.8",
-        "angular-aria": "^1.5.8",
+        "angular": "^1.5.9",
+        "angular-animate": "^1.5.9",
+        "angular-aria": "^1.5.9",
         "angular-material": "^1.1.1",
-        "angular-messages": "^1.5.8",
+        "angular-messages": "^1.5.9",
         "angular-ui-router": "^1.0.0-beta.3",
         "moment": "^2.17.0",
         "oclazyload": "^1.0.9",
@@ -49,7 +49,7 @@
         "tslint-loader": "^3.2.0",
         "typescript": "^2.0.10",
         "webpack": "^2.1.0-beta.27",
-        "webpack-dev-server": "^2.1.0-beta.11",
-        "webpack-merge": "^0.17.0"
+        "webpack-dev-server": "^2.1.0-beta.12",
+        "webpack-merge": "^0.18.0"
     }
 }

@@ -15,6 +15,11 @@ module.exports = {
                 test: /\.scss$/,
                 loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap!sass-loader' })
             },
+
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+            },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
                 loader: 'file-loader?name=assets/images/[name].[ext]'

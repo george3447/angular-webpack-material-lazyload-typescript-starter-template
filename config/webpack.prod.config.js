@@ -28,6 +28,10 @@ module.exports = {
                 loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader' })
             },
             {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('css-loader')
+            },
+            {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
                 loader: `file-loader?name=assets/images/[name].[hash].[ext]`
             }
@@ -35,9 +39,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin([ENV]),
+        new CleanWebpackPlugin([ENV], { root: cwd }),
         new webpack.LoaderOptionsPlugin({
-            minimize: true,
+            minimize: false,
             options: {
                 tslint: {
                     emitErrors: true,
