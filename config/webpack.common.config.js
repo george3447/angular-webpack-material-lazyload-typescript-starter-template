@@ -14,11 +14,8 @@ module.exports = {
             'angular',
             'angular-aria',
             'angular-animate',
-            'angular-material',
             'angular-messages',
-            'moment',
-            'angular-ui-router',
-            'rxjs',
+            'angular-material',
             'oclazyload'
         ],
         app: './src/app/app.module.ts'
