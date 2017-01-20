@@ -1,7 +1,6 @@
-    @import "../../../../assets/css/variables";
-    side-menu {
-        md-sidenav {
-            position: relative;
+        @import "../../../../assets/css/variables";
+        side-menu {
+            background-color: transparent;
             md-list {
                 padding: 0;
             }
@@ -61,13 +60,3 @@
                 }
             }
         }
-    }
-    
-    @media (max-width: 456px) {
-        side-menu {
-            width: 100%;
-            position: absolute;
-            top: 56px;
-            bottom: 0;
-        }
-    }

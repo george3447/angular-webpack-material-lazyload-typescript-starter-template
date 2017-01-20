@@ -41,7 +41,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin([ENV], { root: cwd }),
         new webpack.LoaderOptionsPlugin({
-            minimize: false,
+            minimize: true,
             options: {
                 tslint: {
                     emitErrors: true,
@@ -52,7 +52,7 @@ module.exports = {
                 resolve: {}
             }
         }),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin(`assets/css/${fileName}.css`),
         new webpack.optimize.CommonsChunkPlugin({
             names: ["vendor", "manifest"]

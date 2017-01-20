@@ -1,6 +1,6 @@
 <md-toolbar layout="row">
     <div class="md-toolbar-tools">
-        <md-button ng-click="$ctrl.toggleSideMenu()" class="md-icon-button">
+        <md-button ng-click="$ctrl.onToggleSideMenu()" class="md-icon-button">
             <md-icon aria-label="Side Menu" md-font-icon="material-icons">menu</md-icon>
         </md-button>
         <img class="logo" src="../../../../assets/images/logo.png">
@@ -22,7 +22,7 @@
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                    <md-button ng-click="$ctrl.logOut()" md-prevent-menu-close="md-prevent-menu-close">
+                    <md-button ng-click="$ctrl.onLogOutClick()" md-prevent-menu-close="md-prevent-menu-close">
                         <md-icon aria-label="Settings" md-font-icon="material-icons">lock</md-icon> Logout
                     </md-button>
                 </md-menu-item>

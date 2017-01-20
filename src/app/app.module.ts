@@ -1,19 +1,16 @@
 import { module } from 'angular';
 
-import AppComponent from './app.component';
+import appComponent from './app.component';
 import configure from './app.config';
+import runBlock from './app.run';
 import Core from './core/core.module';
 import Shared from './shared/shared.module';
 
-
-const root = module('app', [
-    Core,
-    Shared,
-]).component('appComponent', AppComponent)
+const AppModule: string = module('app', [Core, Shared])
+    .component('appComponent', appComponent)
     .config(configure)
-    .run(['$state', function ($state) {
-        $state.go('auth');
-    }])
+    .run(runBlock)
     .name;
 
-export default root;
+angular.bootstrap(document, [AppModule]);
+

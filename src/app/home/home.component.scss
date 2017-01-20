@@ -1,0 +1,24 @@
+home-component {
+    .content-con {
+        position: relative;
+    }
+    md-sidenav {
+        &:not(.md-closed):not(.md-closed-remove) {
+            position: relative;
+        }
+        border-right: 1px solid rgba(0, 0, 0, 0.117647);
+    }
+    @media (max-width: 456px) {
+        .content-con {
+            position: inherit;
+        }
+        md-sidenav.md-sidenav-left {
+            width: 100%;
+            position: absolute;
+            top: 56px;
+            bottom: 0;
+            width: 100%;
+            min-width: 100%;
+        }
+    }
+}

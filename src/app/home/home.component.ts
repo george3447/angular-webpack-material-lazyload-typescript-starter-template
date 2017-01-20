@@ -1,27 +1,47 @@
 import { IComponentController, IAugmentedJQuery, IComponentOptions } from 'angular';
+import { State, StateDeclaration, StateService, Transition } from 'angular-ui-router';
 
-import SideMenuService from './shared/sideMenu/sideMenu.service';
-import { State } from 'angular-ui-router';
+import AuthService from '../auth/shared/auth.service';
+import './home.component.scss';
 
 class HomeController implements IComponentController {
 
-    selectedState: State;
+    activeState: StateDeclaration;
+    isMenuOpen: boolean;
+    $transition$: Transition;
 
-    static $inject = ['$element', 'SideMenuService'];
+    static $inject = ['$element', '$state', '$mdMedia', 'AuthService'];
 
-    constructor(private $element: IAugmentedJQuery, private sideMenuService: SideMenuService) { }
+    constructor(private $element: IAugmentedJQuery,
+        private $state: StateService,
+        private $mdMedia: ng.material.IMedia,
+        private authService: AuthService) { }
 
     $onInit() {
+        this.isMenuOpen = this.$mdMedia("gt-md");
+        this.activeState = this.$transition$.to();
         this.$element.addClass('layout-column flex');
-        this.sideMenuService.loadMenuItems();
     }
 
-    selectState(selectedState: State) {
-        this.selectedState = selectedState;
+    selectState(selectedState: StateDeclaration) {
+        this.$state.go(selectedState).then((state: State) => {
+            if (state.name === selectedState.name) {
+                this.activeState = selectedState;
+            }
+        });
+    }
+
+    toggleSideMenu() {
+        this.isMenuOpen = !this.isMenuOpen;
+    }
+
+    logOut() {
+        this.authService.logOut().then(() => { this.$state.go('auth'); });
     }
 }
 
 const homeComponent: IComponentOptions = {
+    bindings: { $transition$: '<' },
     controller: HomeController,
     template: require('./home.component.html') as string
 };

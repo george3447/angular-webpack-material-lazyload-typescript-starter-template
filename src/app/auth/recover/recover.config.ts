@@ -1,12 +1,12 @@
-import { StateProvider, StateDeclaration } from 'angular-ui-router';
+// import { StateProvider, StateDeclaration } from 'angular-ui-router';
 
-function configure($stateProvider: StateProvider) {
-    $stateProvider.state("recover", <StateDeclaration>{
-        parent: "auth",
-        component: "recover"
-    });
-}
+// function configure($stateProvider: StateProvider) {
+//     $stateProvider.state("recover", <StateDeclaration>{
+//         parent: "auth",
+//         component: "recover"
+//     });
+// }
 
-configure.$inject = ['$stateProvider'];
+// configure.$inject = ['$stateProvider'];
 
-export default configure;
+// export default configure;

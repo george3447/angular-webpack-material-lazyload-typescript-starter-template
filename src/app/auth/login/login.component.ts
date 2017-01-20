@@ -1,13 +1,7 @@
 import { IComponentController, IAugmentedJQuery, IComponentOptions } from 'angular';
-import { StateService } from 'angular-ui-router';
 
-import AuthService, { ILoginCriteria } from '../shared/auth.service';
+import { ILoginCriteria } from '../shared/auth.models';
 import './login.component.scss';
-
-
-interface IStateOptions {
-    custom: any;
-}
 
 const loginCriteriaTemp: ILoginCriteria = {
     userName: null,
@@ -16,13 +10,13 @@ const loginCriteriaTemp: ILoginCriteria = {
 
 class LoginController implements IComponentController {
 
+    static $inject = ['$element'];
+
+    onLogIn: Function;
+
     private loginCriteria: ILoginCriteria;
 
-    static $inject = ['$element', 'AuthService', '$state'];
-
-    constructor(private $element: IAugmentedJQuery,
-        private authService: AuthService,
-        private $state: StateService) { }
+    constructor(private $element: IAugmentedJQuery) { }
 
     $onInit() {
         this.$element.addClass('layout-column flex');
@@ -32,12 +26,7 @@ class LoginController implements IComponentController {
     onSubmit(isValid: boolean) {
 
         if (isValid) {
-            this.authService.logIn(this.loginCriteria)
-                .then((isAuthenticard: boolean) => {
-                    if (isAuthenticard) {
-                        this.$state.go('home', {}, <IStateOptions>{ custom: { ignoreAuthentication: true } });
-                    }
-                });
+            this.onLogIn({ loginCriteria: this.loginCriteria });
         }
     }
 
@@ -50,6 +39,9 @@ class LoginController implements IComponentController {
 }
 
 const loginComponent: IComponentOptions = {
+    bindings: {
+        onLogIn: '&'
+    },
     controller: LoginController,
     template: require('./login.component.html') as string
 };

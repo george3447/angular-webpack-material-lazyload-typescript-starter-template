@@ -15,14 +15,18 @@ function configure($compileProvider: ICompileProvider, $stateProvider: StateProv
                 let lazyModule: any = require('./auth/auth.module');
                 resolveLazyState(lazyModule, resolve, $ocLazyLoad);
             }, "auth");
-        })
+        }),
+        component: "authComponent",
+        redirectTo: 'login'
     }).state("home", <StateDeclaration>{
         lazyLoad: loadLazyState(function (resolve, $ocLazyLoad) {
             require.ensure([], function () {
                 let lazyModule: any = require('./home/home.module');
                 resolveLazyState(lazyModule, resolve, $ocLazyLoad);
             }, "home");
-        })
+        }),
+        component: "homeComponent",
+        redirectTo: "childComponent"
     });
 }
 

@@ -1,19 +1,15 @@
 import { IComponentController, IAugmentedJQuery, IComponentOptions } from 'angular';
 
+import { IRecoverCriteria } from '../shared/auth.models';
 import './recover.component.scss';
 
-interface IRecoverCriteria {
-    userName: string;
-    password: string;
-}
-
 const recoverCriteriaTemp: IRecoverCriteria = {
-    userName: null,
-    password: null
+    userName: null
 };
 
 class RecoverController implements IComponentController {
 
+    onRecover: Function;
     private recoverCriteria: IRecoverCriteria;
 
     static $inject = ['$element'];
@@ -25,8 +21,8 @@ class RecoverController implements IComponentController {
     }
 
     onSubmit(isValid: boolean) {
-
         if (isValid) {
+            this.onRecover({ recoverCriteria: this.recoverCriteria });
         }
     }
 
@@ -35,10 +31,12 @@ class RecoverController implements IComponentController {
         form.$setPristine();
         form.$setUntouched();
     }
-
 }
 
 const recoverComponent: IComponentOptions = {
+    bindings: {
+        onRecover: '&'
+    },
     controller: RecoverController,
     template: require('./recover.component.html') as string
 };

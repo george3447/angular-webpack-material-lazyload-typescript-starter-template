@@ -6,6 +6,6 @@
             </div>
             <span flex></span>
         </md-toolbar>
-        <ui-view layout="column" flex />
+        <ui-view layout="column" flex on-log-in="$ctrl.logIn(loginCriteria)" on-recover="$ctrl.recover(recoverCriteria)" />
     </div>
 </div>

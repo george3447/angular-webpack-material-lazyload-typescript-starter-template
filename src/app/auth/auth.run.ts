@@ -1,15 +1,15 @@
 import { TransitionService } from 'angular-ui-router';
-import AuthService from './shared/auth.service';
 
-function authRun($transitions: TransitionService, authService: AuthService) {
-    $transitions.onStart({
-        to: function (state) {
-            return !!(state && state.includes["home"]);
+import { preloadState } from '../shared/util.service';
+
+function authRun($transitions: TransitionService) {
+
+    $transitions.onSuccess({
+        to: state => {
+            return (state && state.includes["auth"]);
         }
-    }, (transition) => {
-        let options = transition.options();
-        return (options && options.custom && options.custom.ignoreAuthentication) || authService.isAuthenticated();
-    });
+    }, transition => preloadState(transition, "auth"));
+    
 }
 
 authRun.$inject = ['$transitions', 'AuthService'];
