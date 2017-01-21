@@ -17,11 +17,11 @@
 
 ## Features
 
-* Angular 1.5 component architecture with typescript
-* Integrated with angular material 1.0
-* Webpack 2.0 based bundle system 
-* Lazyloaded components using angular ui router 1.0. and oclazyload 
-* Communication between components using rxjs
+* AngularJs (v1.6.1) component architecture with typescript
+* Integrated with angular material 1.1.1
+* Webpack (v2.2.0) based bundle system 
+* Lazyloaded and preloaded components using Angular Ui Router (v1.0.0-rc.1) and Oclazyload 
+* Stateful parent components and stateless child components
 * Supports SASS
 * Production
   * Long Term Caching through file hashes enabled
