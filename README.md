@@ -8,9 +8,9 @@
 
 <p align="center">
  <a href='https://gemnasium.com/github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template'><img src="https://gemnasium.com/badges/github.com/george3447/angular-webpack-material-lazyload-typescript-starter-template.svg?style=flat-square" alt="Dependency Status" /></a></p>
-<h4 align="center">
+<h3 align="center">
     Angular starter template using typescript, angular-material, ui-router, oclazyload with webpack support.
-</h4>
+</h3>
 ---
 
 ### Demo : https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/
@@ -18,7 +18,7 @@
 ## Features
 
 * AngularJs (v1.6.1) component architecture with typescript
-* Integrated with angular material 1.1.1
+* Integrated with Angular Material (v1.1.1)
 * Webpack (v2.2.0) based bundle system 
 * Lazyloaded and preloaded components using Angular Ui Router (v1.0.0-rc.1) and Oclazyload 
 * Stateful parent components and stateless child components
