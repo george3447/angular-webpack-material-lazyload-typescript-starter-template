@@ -13,16 +13,16 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap!sass-loader' })
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap!sass-loader' })
             },
 
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader?sourceMap' })
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?sourceMap' })
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
-                loader: 'file-loader?name=assets/images/[name].[ext]'
+                use: 'file-loader?name=assets/images/[name].[ext]'
             }
         ]
     },

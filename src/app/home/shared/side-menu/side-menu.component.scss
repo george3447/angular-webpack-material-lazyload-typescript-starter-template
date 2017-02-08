@@ -12,6 +12,9 @@
                 flex-wrap: wrap;
                 align-items: stretch;
                 justify-content: space-between;
+                &.md-no-proxy {
+                    padding: 0;
+                }
                 &.opened {
                     md-list {
                         transform: scaleY(1);

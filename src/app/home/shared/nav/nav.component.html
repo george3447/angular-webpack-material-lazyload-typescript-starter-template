@@ -7,7 +7,7 @@
         <h5 ng-if="$ctrl.state && $ctrl.state.data && $ctrl.state.data.moduleTitle" class="header-con" ng-bind="$ctrl.state.data.moduleTitle"></h5>
         <span flex></span>
         <md-menu md-offset="0 60">
-            <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button">
+            <md-button ng-click="$mdMenu.open($event)" class="md-icon-button">
                 <md-icon aria-label="Menu" md-font-icon="material-icons">more_vert</md-icon>
             </md-button>
             <md-menu-content width="3">

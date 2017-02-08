@@ -24,16 +24,16 @@ module.exports = {
         rules: [{
                 test: /\.ts$/,
                 enforce: "pre",
-                loader: "tslint-loader"
+                use: "tslint-loader"
             },
             {
                 test: /\.ts$/,
-                loader: 'ts-loader',
+                use: 'ts-loader',
                 exclude: /node_modules/
             },
             {
                 test: /\.html$/,
-                loader: 'html-loader?interpolate'
+                use: 'html-loader?interpolate'
             }
         ]
     },

@@ -25,15 +25,15 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: 'css-loader!sass-loader' })
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader!sass-loader' })
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('css-loader')
+                use: ExtractTextPlugin.extract('css-loader')
             },
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
-                loader: `file-loader?name=assets/images/[name].[hash].[ext]`
+                use: `file-loader?name=assets/images/[name].[hash].[ext]`
             }
 
         ]
