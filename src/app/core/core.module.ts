@@ -1,6 +1,6 @@
 import { module } from 'angular';
 import * as ngMaterial from 'angular-material';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 
 import configure from './core.config';
 

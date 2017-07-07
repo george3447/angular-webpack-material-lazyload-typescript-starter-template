@@ -1,4 +1,4 @@
-import { TransitionService } from "angular-ui-router";
+import { TransitionService } from "@uirouter/angularjs";
 import LoaderService from './loader.service';
 
 function loaderRun($transitions: TransitionService, loaderService: LoaderService) {

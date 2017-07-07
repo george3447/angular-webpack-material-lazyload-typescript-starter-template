@@ -1,4 +1,4 @@
-import { IComponentController, IAugmentedJQuery, IComponentOptions } from 'angular';
+import { IComponentController, IAugmentedJQuery, IComponentOptions, copy } from 'angular';
 
 import { IRecoverCriteria } from '../shared/auth.models';
 import './recover.component.scss';
@@ -17,7 +17,7 @@ class RecoverController implements IComponentController {
 
     $onInit() {
         this.$element.addClass('layout-column flex');
-        this.recoverCriteria = angular.copy(recoverCriteriaTemp);
+        this.recoverCriteria = copy(recoverCriteriaTemp);
     }
 
     onSubmit(isValid: boolean) {
@@ -27,7 +27,7 @@ class RecoverController implements IComponentController {
     }
 
     onCancel(form: ng.IFormController) {
-        this.recoverCriteria = angular.copy(recoverCriteriaTemp);
+        this.recoverCriteria = copy(recoverCriteriaTemp);
         form.$setPristine();
         form.$setUntouched();
     }

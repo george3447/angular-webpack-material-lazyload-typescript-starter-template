@@ -19,10 +19,10 @@ class MessageService {
 
     static $inject: Array<string> = ['$mdDialog'];
 
-    constructor(private $mdDialog: angular.material.IDialogService) { }
+    constructor(private $mdDialog:angular.material.IDialogService) { }
 
     alert(options: IAlertOptions) {
-        let alert: angular.material.IAlertDialog = this.$mdDialog.alert()
+        let alert = this.$mdDialog.alert()
             .title(options.title)
             .textContent(options.subject)
             .ok(options.okButtonLabel || "Ok");
@@ -33,7 +33,7 @@ class MessageService {
     }
 
     confirm(options: IConfirmOptions) {
-        let confirm: angular.material.IAlertDialog = this.$mdDialog.confirm()
+        let confirm = this.$mdDialog.confirm()
             .title(options.title)
             .textContent(options.subject)
             .ok(options.okButtonLabel || "Yes")

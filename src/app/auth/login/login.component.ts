@@ -1,4 +1,4 @@
-import { IComponentController, IAugmentedJQuery, IComponentOptions } from 'angular';
+import { IComponentController, IAugmentedJQuery, IComponentOptions, copy } from 'angular';
 
 import { ILoginCriteria } from '../shared/auth.models';
 import './login.component.scss';
@@ -20,7 +20,7 @@ class LoginController implements IComponentController {
 
     $onInit() {
         this.$element.addClass('layout-column flex');
-        this.loginCriteria = angular.copy(loginCriteriaTemp);
+        this.loginCriteria = copy(loginCriteriaTemp);
     }
 
     onSubmit(isValid: boolean) {
@@ -31,7 +31,7 @@ class LoginController implements IComponentController {
     }
 
     onCancel(form: ng.IFormController) {
-        this.loginCriteria = angular.copy(loginCriteriaTemp);
+        this.loginCriteria = copy(loginCriteriaTemp);
         form.$setPristine();
         form.$setUntouched();
     }

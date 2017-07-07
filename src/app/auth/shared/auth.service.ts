@@ -19,22 +19,22 @@ class AuthService {
         return this.dataService.post("/bins", loginCriteria).then(data => {
             this.authInfo = <IAuthInfo>data;
             return data;
-        });
+        }) as IPromise<boolean>;
     }
 
     logOut(): IPromise<boolean> {
-        return this.dataService.post("/bins", this.authInfo);
+        return this.dataService.post("/bins", this.authInfo) as IPromise<boolean>;
     }
 
     recover(recoverCriteria: IRecoverCriteria): IPromise<boolean> {
         return this.dataService.post("/bins", recoverCriteria).then(data => {
             this.authInfo = <IAuthInfo>data;
             return data;
-        });
+        }) as IPromise<boolean>;
     }
 
     isAuthenticated(): IPromise<boolean> {
-        return this.dataService.post("/bins", this.authInfo);
+        return this.dataService.post("/bins", this.authInfo) as IPromise<boolean>;
     }
 
 }

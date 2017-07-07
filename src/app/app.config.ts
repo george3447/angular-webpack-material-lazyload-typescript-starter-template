@@ -1,7 +1,7 @@
 import { ICompileProvider } from 'angular';
-import { StateProvider, StateDeclaration } from 'angular-ui-router';
+import { StateProvider, Ng1StateDeclaration } from '@uirouter/angularjs';
 
-import { loadLazyState, resolveLazyState } from './shared/util.service';
+import { loadLazyState } from './shared/util.service';
 
 function configure($compileProvider: ICompileProvider, $stateProvider: StateProvider) {
 
@@ -9,22 +9,12 @@ function configure($compileProvider: ICompileProvider, $stateProvider: StateProv
 
     $compileProvider.debugInfoEnabled(!isProductionBuild);
 
-    $stateProvider.state("auth", <StateDeclaration>{
-        lazyLoad: loadLazyState(function (resolve, $ocLazyLoad) {
-            require.ensure([], function () {
-                let lazyModule: any = require('./auth/auth.module');
-                resolveLazyState(lazyModule, resolve, $ocLazyLoad);
-            }, "auth");
-        }),
+    $stateProvider.state("auth", <Ng1StateDeclaration>{
+        lazyLoad: loadLazyState(() => import(/* webpackChunkName: "auth" */ './auth/auth.module')),
         component: "authComponent",
         redirectTo: 'login'
-    }).state("home", <StateDeclaration>{
-        lazyLoad: loadLazyState(function (resolve, $ocLazyLoad) {
-            require.ensure([], function () {
-                let lazyModule: any = require('./home/home.module');
-                resolveLazyState(lazyModule, resolve, $ocLazyLoad);
-            }, "home");
-        }),
+    }).state("home", <Ng1StateDeclaration>{
+        lazyLoad: loadLazyState(() => import(/* webpackChunkName: "home" */ './home/home.module')),
         component: "homeComponent",
         redirectTo: "childComponent"
     });

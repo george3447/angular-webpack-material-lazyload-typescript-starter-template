@@ -1,5 +1,5 @@
 import { IComponentController, IComponentOptions } from 'angular';
-import { StateDeclaration } from 'angular-ui-router';
+import { StateDeclaration } from '@uirouter/angularjs';
 
 import SideMenuService from './shared/side-menu.service';
 import './side-menu.component.scss';

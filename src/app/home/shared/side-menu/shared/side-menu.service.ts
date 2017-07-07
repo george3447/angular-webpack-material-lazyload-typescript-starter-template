@@ -1,4 +1,4 @@
-import { StateDeclaration, StateService } from 'angular-ui-router';
+import { StateDeclaration, StateService } from '@uirouter/angularjs';
 
 class SideMenuService {
 

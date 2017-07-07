@@ -1,5 +1,5 @@
 import { IComponentOptions, IComponentController, IAugmentedJQuery } from 'angular';
-import { StateService } from 'angular-ui-router';
+import { StateService } from '@uirouter/angularjs';
 
 import AuthService from './shared/auth.service';
 import { ILoginCriteria, IRecoverCriteria } from './shared/auth.models';

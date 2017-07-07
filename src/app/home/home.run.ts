@@ -1,11 +1,11 @@
-import { TransitionService } from 'angular-ui-router';
+import { TransitionService } from '@uirouter/angularjs';
 import AuthService from '../auth/shared/auth.service';
 import { preloadState } from '../shared/util.service';
 
 function homeRun($transitions: TransitionService, authService: AuthService) {
 
     $transitions.onStart({
-        to: state => !!(state && state.includes["home"])
+        to: state => !!(state && state.$$state().includes["home"])
     }, transition => {
         let options = transition.options();
         return (options &&
@@ -16,7 +16,7 @@ function homeRun($transitions: TransitionService, authService: AuthService) {
 
     $transitions.onSuccess({
         to: state => {
-            return (state && state.includes["home"]);
+            return (state && state.$$state().includes["home"]);
         }
     }, transition => preloadState(transition, "lazyParent"));
     

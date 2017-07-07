@@ -14,6 +14,10 @@ class LoaderController implements IComponentController {
         this.loaderService.hideRequested$.subscribe(() => this.hide());
     }
 
+    $onInit(){
+        
+    }
+
     private show() {
         this.isVisible = true;
     }

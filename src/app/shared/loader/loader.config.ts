@@ -1,4 +1,5 @@
 import {
+    isObject,
     IQService,
     ICacheFactoryService,
     ITimeoutService,
@@ -65,8 +66,8 @@ function loaderConfigure($httpProvider) {
 
             if ((config.cache || defaults.cache) && config.cache !== false &&
                 (config.method === 'GET' || config.method === 'JSONP')) {
-                cache = angular.isObject(config.cache) ? config.cache
-                    : angular.isObject(defaults.cache) ? defaults.cache
+                cache = isObject(config.cache) ? config.cache
+                    : isObject(defaults.cache) ? defaults.cache
                         : defaultCache;
             }
 

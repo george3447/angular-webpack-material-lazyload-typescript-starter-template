@@ -1,4 +1,4 @@
-import { StateProvider, StateDeclaration } from 'angular-ui-router';
+import { StateProvider, StateDeclaration } from '@uirouter/angularjs';
 
 import { IMenu } from '../../shared/side-menu/shared/side-menu.models';
 

@@ -1,5 +1,5 @@
 import { IComponentController, IAugmentedJQuery, IComponentOptions } from 'angular';
-import { State, StateDeclaration, StateService, Transition } from 'angular-ui-router';
+import { StateObject, StateDeclaration, StateService, Transition } from '@uirouter/angularjs';
 
 import AuthService from '../auth/shared/auth.service';
 import './home.component.scss';
@@ -24,7 +24,7 @@ class HomeController implements IComponentController {
     }
 
     selectState(selectedState: StateDeclaration) {
-        this.$state.go(selectedState).then((state: State) => {
+        this.$state.go(selectedState).then((state: StateObject) => {
             if (state.name === selectedState.name) {
                 this.activeState = selectedState;
             }

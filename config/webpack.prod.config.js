@@ -4,11 +4,14 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
+
 
 const fileName = "[name].[chunkhash]";
 const hostEndPoint = {
     dist: "https://george3447.github.io/angular-webpack-material-lazyload-typescript-starter-template/",
-    distLocal: "http://localhost:75/"
+    distLocal: "/"
 };
 
 let cwd = process.cwd();
@@ -57,7 +60,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             names: ["vendor", "manifest"]
         }),
-        new webpack.optimize.UglifyJsPlugin({
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new UglifyJsPlugin({
             compress: {
                 warnings: false
             },
@@ -69,6 +73,12 @@ module.exports = {
             test: /\.js$|\.css$|\.html$/,
             threshold: 10240,
             minRatio: 0.8
+        }),
+        new OfflinePlugin({
+            AppCache: false,
+            ServiceWorker: {
+                events: true
+            }
         })
     ]
 };

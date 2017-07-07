@@ -1,4 +1,4 @@
-// import { StateProvider, StateDeclaration } from 'angular-ui-router';
+// import { StateProvider, StateDeclaration } from '@uirouter/angularjs';
 
 // function configure($stateProvider: StateProvider) {
 //     $stateProvider.state("recover", <StateDeclaration>{

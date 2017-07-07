@@ -1,12 +1,20 @@
 {
     "compilerOptions": {
-        "module": "es2015",
         "moduleResolution": "node",
-        "target": "es5",
+        "module": "esnext",
+        // "lib": ["esnext",
+        //     "dom",
+        //     "dom.iterable",
+        //     "es2015"
+        // ],
         "noImplicitAny": false,
         "sourceMap": true,
         "noUnusedParameters": true,
-        "noUnusedLocals": true
+        "noUnusedLocals": true,
+        "skipLibCheck": true,
+        "typeRoots": [
+            "node_modules/@types"
+        ]
     },
     "exclude": [
         "node_modules"
