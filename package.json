@@ -1,6 +1,6 @@
 {
     "name": "angular-webpack-material-lazyload-typescript-starter-template",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "An Angular 1.5 + Angular Material + Typescript + Webpack starter template with code splitting and lazy loading",
     "main": "index.js",
     "scripts": {
