@@ -5,8 +5,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest')
 const OfflinePlugin = require('offline-plugin');
 
+const package = require("../package.json");
 
 const fileName = "[name].[chunkhash]";
 const hostEndPoint = {
@@ -37,6 +39,10 @@ module.exports = {
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
                 use: `file-loader?name=assets/images/[name].[hash].[ext]`
+            },
+            {
+                test: /\.woff$|\.woff2$|\.eot$|\.woffs$|\.ttf$/,
+                use: `file-loader?name=assets/fonts/[name].[hash].[ext]`
             }
 
         ]
@@ -74,6 +80,22 @@ module.exports = {
             threshold: 10240,
             minRatio: 0.8
         }),
+        // new WebpackPwaManifest({
+        //     name: package.name,
+        //     short_name: 'Angular PWA ST',
+        //     description: package.description,
+        //     background_color: '#ffffff',
+        //     useWebpackPublicPath: true,
+        //     icons: [{
+        //             src: path.resolve('src/assets/images/logo.png'),
+        //             sizes: [96, 128, 192, 256, 384, 512]
+        //         },
+        //         {
+        //             src: path.resolve('src/assets/images/logo.png'),
+        //             size: '1024x1024'
+        //         }
+        //     ]
+        // }),
         new OfflinePlugin({
             AppCache: false,
             ServiceWorker: {

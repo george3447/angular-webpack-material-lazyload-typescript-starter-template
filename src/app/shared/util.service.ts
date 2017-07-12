@@ -1,26 +1,4 @@
-//import {IQService,  IQResolveReject} from 'angular';
 import { Transition, StateService, StateDeclaration } from '@uirouter/angularjs';
-
-//import LoaderService from './loader/loader.service';
-
-// export function loadLazyState(callback: (resolve: IQResolveReject<LazyLoadResult>, $ocLazyLoad: any, loaderService?: LoaderService) => void) {
-//     return (transition: Transition):Promise<LazyLoadResult> => {
-//         let injector = transition.injector();
-//         let $ocLazyLoad = injector.get('$ocLazyLoad');
-//         let $q: IQService = injector.get('$q');
-//         let loaderService: LoaderService = injector.get('LoaderService');
-//         if (loaderService && loaderService.show) { loaderService.show(); }
-//         return $q((resolve) => callback(resolve, $ocLazyLoad, loaderService);
-//     };
-// }
-
-// export function resolveLazyState(lazyModule: any, resolve: IQResolveReject<{}>, $ocLazyLoad: any, loaderService?: LoaderService) {
-//     if (lazyModule && lazyModule.default) {
-//         $ocLazyLoad.load({ name: lazyModule.default });
-//         if (loaderService && loaderService.hide) { loaderService.hide(); }
-//         resolve(lazyModule);
-//     }
-// }
 
 export function loadLazyState(importModule) {
     return ($transition$: Transition) => {
@@ -29,8 +7,6 @@ export function loadLazyState(importModule) {
             .then(mod => $ocLazyLoad.load({ name: mod.default }));
     }
 }
-
-
 
 export function preloadState(transition: Transition, parentState: string) {
     let $state: StateService = transition.router.stateService;

@@ -23,6 +23,10 @@ module.exports = {
             {
                 test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
                 use: 'file-loader?name=assets/images/[name].[ext]'
+            },
+            {
+                test: /\.woff$|\.woff2$|\.eot$|\.woffs$|\.ttf$/,
+                use: `file-loader?name=assets/fonts/[name].[ext]`
             }
         ]
     },

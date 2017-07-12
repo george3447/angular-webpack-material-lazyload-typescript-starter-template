@@ -1,5 +1,4 @@
 import { IComponentController, IComponentOptions } from 'angular';
-import 'angular-material/angular-material.scss';
 
 import './app.component.scss';
 

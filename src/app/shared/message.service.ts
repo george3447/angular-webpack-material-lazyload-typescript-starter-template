@@ -5,14 +5,14 @@ interface IMessageOptions {
 }
 
 export interface IAlertOptions extends IMessageOptions {
-    afterClosed?: () => {};
+    afterClosed?: () => any;
 }
 
 export interface IConfirmOptions extends IMessageOptions {
     okButtonLabel?: string;
     cancelButtonLabel?: string;
-    successCallback?: () => {};
-    errorCallback?: () => {};
+    successCallback?: () => any;
+    errorCallback?: () => any;
 }
 
 class MessageService {

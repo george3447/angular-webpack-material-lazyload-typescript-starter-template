@@ -2,9 +2,11 @@
     <div layout="column" flex-xs="100" flex-sm="50" flex-md="40" flex="25" class="md-whiteframe-3dp main-container" layout-align="center">
         <md-toolbar layout="row">
             <div class="md-toolbar-tools">
-                <img class="logo" src="../../assets/images/logo.png">
+                <img class="logo" src="../../assets/images/logo.png" alt="logo">
+                <span class="md-caption" ng-bind="$ctrl.version"></span>
             </div>
             <span flex></span>
+
         </md-toolbar>
         <ui-view layout="column" flex on-log-in="$ctrl.logIn(loginCriteria)" on-recover="$ctrl.recover(recoverCriteria)" />
     </div>

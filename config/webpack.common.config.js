@@ -28,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.ts$/,
-                use: 'ts-loader',
+                use: ['babel-loader', 'ts-loader'],
                 exclude: /node_modules/
             },
             {
@@ -52,7 +52,8 @@ module.exports = {
             }
         }),
         new webpack.DefinePlugin({
-            __ENV: JSON.stringify(ENV)
+            __ENV: JSON.stringify(ENV),
+            __VERSION: JSON.stringify(require("../package.json").version)
         }),
         new ProgressBarPlugin({
             format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds) on ' + moment().format('MMMM Do YYYY, h:mm a') +

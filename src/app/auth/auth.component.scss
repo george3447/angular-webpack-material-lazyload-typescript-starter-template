@@ -1,6 +1,12 @@
 auth-component {
     .main-container {
         height: 75%;
+        .logo {
+            margin-right: 10px;
+        }
+        .md-caption {
+            margin-top: 20px;
+        }
     }
     @media (max-width: 599px) {
         .main-container {

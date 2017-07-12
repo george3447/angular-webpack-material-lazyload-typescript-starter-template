@@ -11,6 +11,8 @@ interface IStateOptions {
 
 class AuthController implements IComponentController {
 
+    version: string;
+
     static $inject = ['$element', '$state', 'AuthService'];
 
     constructor(
@@ -21,6 +23,7 @@ class AuthController implements IComponentController {
 
     $onInit() {
         this.$element.addClass('layout-column flex');
+        this.version = "v" + __VERSION;
     }
 
     logIn(loginCriteria: ILoginCriteria) {
