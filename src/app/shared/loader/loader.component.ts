@@ -10,12 +10,11 @@ class LoaderController implements IComponentController {
     private isVisible: boolean;
 
     constructor(private loaderService: LoaderService) {
-        this.loaderService.showRequested$.subscribe(() => this.show());
-        this.loaderService.hideRequested$.subscribe(() => this.hide());
+        this.loaderService.showRequested$.subscribe((isRequestForShow) => isRequestForShow ? this.show() : this.hide());
     }
 
-    $onInit(){
-        
+    $onInit() {
+
     }
 
     private show() {
@@ -32,7 +31,7 @@ const LoaderComponent: IComponentOptions = {
 
     controller: LoaderController,
     template: require('./loader.component.html') as string
-    
+
 };
 
 export default LoaderComponent;

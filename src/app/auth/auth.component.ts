@@ -37,7 +37,7 @@ class AuthController implements IComponentController {
     recover(recoverCriteria: IRecoverCriteria) {
         this.authService.recover(recoverCriteria).then((isAuthenticated: boolean) => {
             if (isAuthenticated) {
-                this.$state.go('auth', {}, <IStateOptions>{ custom: { ignoreAuthentication: true } });
+                this.$state.go('login', {}, <IStateOptions>{ custom: { ignoreAuthentication: true } });
             }
         });
     }

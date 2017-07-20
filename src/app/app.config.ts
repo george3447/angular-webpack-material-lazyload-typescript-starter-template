@@ -10,9 +10,9 @@ function configure($compileProvider: ICompileProvider, $stateProvider: StateProv
     $compileProvider.debugInfoEnabled(!isProductionBuild);
 
     $stateProvider.state("auth", <Ng1StateDeclaration>{
-        lazyLoad: loadLazyState(() => import(/* webpackChunkName: "auth" */ './auth/auth.module')),
-        component: "authComponent",
-        redirectTo: 'login'
+        //lazyLoad: loadLazyState(() => import(/* webpackChunkName: "auth" */ './auth/auth.module')),
+        component: "authComponent"//,
+        //redirectTo: 'login'
     }).state("home", <Ng1StateDeclaration>{
         lazyLoad: loadLazyState(() => import(/* webpackChunkName: "home" */ './home/home.module')),
         component: "homeComponent",

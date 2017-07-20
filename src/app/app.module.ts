@@ -8,8 +8,9 @@ import configure from './app.config';
 import runBlock from './app.run';
 import Core from './core/core.module';
 import Shared from './shared/shared.module';
+import Auth from './auth/auth.module';
 
-const AppModule: string = module('app', [Core, Shared])
+const AppModule: string = module('app', [Core, Shared, Auth])
     .component('appComponent', appComponent)
     .config(configure)
     .run(runBlock)

@@ -36,7 +36,7 @@ class HomeController implements IComponentController {
     }
 
     logOut() {
-        this.authService.logOut().then(() => { this.$state.go('auth'); });
+        this.authService.logOut().then(() => { this.$state.go('login'); });
     }
 }
 

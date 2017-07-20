@@ -1,20 +1,19 @@
 import { Subject } from 'rxjs/Subject';
 
 class LoaderService {
-    private showRequestedSource = new Subject<string>();
-    private hideRequestedSource = new Subject<string>();
+
+    private showRequestedSource = new Subject<boolean>();
 
     constructor() { }
 
     showRequested$ = this.showRequestedSource.asObservable();
-    hideRequested$ = this.hideRequestedSource.asObservable();
 
     show() {
-        this.showRequestedSource.next(null);
+        this.showRequestedSource.next(true);
     }
 
     hide() {
-        this.hideRequestedSource.next(null);
+        this.showRequestedSource.next(false);
     }
 }
 

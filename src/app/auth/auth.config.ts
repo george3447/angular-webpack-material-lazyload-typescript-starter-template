@@ -4,7 +4,7 @@ import { loadLazyState } from '../shared/util.service';
 function authConfigure($stateProvider: StateProvider) {
     $stateProvider
         .state("login", <StateDeclaration>{
-            lazyLoad: loadLazyState(() => import(/* webpackChunkName: "login" */ './login/login.module')),
+            //lazyLoad: loadLazyState(() => import(/* webpackChunkName: "login" */ './login/login.module')),
             parent: "auth",
             component: "login"
         }).state("recover", <StateDeclaration>{

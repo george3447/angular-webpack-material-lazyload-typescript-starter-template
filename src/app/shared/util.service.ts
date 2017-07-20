@@ -1,10 +1,11 @@
 import { Transition, StateService, StateDeclaration } from '@uirouter/angularjs';
+import { ILazyLoad, IModuleConfig } from 'oclazyload'
 
 export function loadLazyState(importModule) {
     return ($transition$: Transition) => {
-        let $ocLazyLoad = $transition$.injector().get('$ocLazyLoad');
+        let $ocLazyLoad:ILazyLoad = $transition$.injector().get('$ocLazyLoad');
         return importModule()
-            .then(mod => $ocLazyLoad.load({ name: mod.default }));
+            .then(mod => $ocLazyLoad.load({ name: mod.default } as IModuleConfig));
     }
 }
 

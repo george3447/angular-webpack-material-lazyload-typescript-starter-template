@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import { format, parse, isValid } from 'date-fns';
 import { ILocationProvider } from 'angular';
 
 function configure(
@@ -17,12 +17,12 @@ function configure(
 
     // Angular material datepicker configuration    
     $mdDateLocaleProvider.formatDate = function (date) {
-        return date ? moment(date).format(dateFormat) : '';
+        return date ? format(date, dateFormat) : '';
     };
 
     $mdDateLocaleProvider.parseDate = function (dateString) {
-        var m = moment(dateString, dateFormat, true);
-        return m.isValid() ? m.toDate() : new Date(NaN);
+        var m = parse(dateString);
+        return isValid(m) ? m : new Date(NaN);
     };
 
     $locationProvider.html5Mode(true);

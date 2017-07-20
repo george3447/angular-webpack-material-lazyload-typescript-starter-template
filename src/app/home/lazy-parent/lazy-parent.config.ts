@@ -11,12 +11,6 @@ function configure($stateProvider: StateProvider) {
         data: <IMenu>{ isMenuItem: true, navTitle: "lazy-parent" }
     }).state("lazyChild", <StateDeclaration>{
         lazyLoad: loadLazyState(() => import(/* webpackChunkName: "lazy-child" */ './lazy-child/lazy-child.module')),
-        // loadLazyState(function (resolve, $ocLazyLoad, loaderService) {
-        //     require.ensure([], function () {
-        //         let lazyModule: any = require('./lazy-child/lazy-child.module');
-        //         resolveLazyState(lazyModule, resolve, $ocLazyLoad, loaderService);
-        //     }, "lazyChild");
-        // }),
         component: "lazyChildComponent",
         parent: "lazyParent",
         data: <IMenu>{
@@ -27,12 +21,6 @@ function configure($stateProvider: StateProvider) {
         }
     }).state("lazyChildOne", <StateDeclaration>{
         lazyLoad: loadLazyState(() => import(/* webpackChunkName: "lazy-child-one" */ './lazy-child-one/lazy-child-one.module')),
-        // lazyLoad: loadLazyState(function (resolve, $ocLazyLoad, loaderService) {
-        //     require.ensure([], function () {
-        //         let lazyModule: any = require('./lazy-child-one/lazy-child-one.module');
-        //         resolveLazyState(lazyModule, resolve, $ocLazyLoad, loaderService);
-        //     }, "lazyChildOne");
-        // }),
         component: "lazyChildOneComponent",
         parent: "lazyParent",
         data: <IMenu>{
@@ -43,12 +31,6 @@ function configure($stateProvider: StateProvider) {
         }
     }).state("lazyChildTwo", <StateDeclaration>{
         lazyLoad: loadLazyState(() => import(/* webpackChunkName: "lazy-child-two" */ './lazy-child-two/lazy-child-two.module')),
-        // lazyLoad: loadLazyState(function (resolve, $ocLazyLoad, loaderService) {
-        //     require.ensure([], function () {
-        //         let lazyModule: any = require('./lazy-child-two/lazy-child-two.module');
-        //         resolveLazyState(lazyModule, resolve, $ocLazyLoad, loaderService);
-        //     }, "lazyChildTwo");
-        // }),
         component: "lazyChildTwoComponent",
         parent: "lazyParent",
         data: <IMenu>{
