@@ -1,6 +1,6 @@
 <md-list>
     <md-list-item ng-repeat="menuItem in $ctrl.menuItems" ng-class="{opened: menuItem.data.isOpen}">
-        <md-button class="md-accent" ng-class="{active:menuItem.name===$ ctrl.activeMenuItem.name}" ng-click="$ctrl.onMenuItemClick(menuItem)" ng-if="!menuItem.abstract"> {{menuItem.data.navTitle}}
+        <md-button class="md-accent" ng-class="{active:menuItem.name===$ctrl.activeMenuItem.name}" ng-click="$ctrl.onMenuItemClick(menuItem)" ng-if="!menuItem.abstract"> {{menuItem.data.navTitle}}
         </md-button>
         <md-button ng-class="{active:menuItem.name===$ctrl.activeMenuItem.parent}" class="md-accent" ng-click="$ctrl.onMenuClick(menuItem)" ng-if="menuItem.abstract"> {{menuItem.data.navTitle}}
             <md-icon md-font-icon="material-icons">{{menuItem.data.isOpen ? 'keyboard_arrow_up':'keyboard_arrow_down'}}</md-icon>

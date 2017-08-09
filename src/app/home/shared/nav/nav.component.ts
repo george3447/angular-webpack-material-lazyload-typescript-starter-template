@@ -1,5 +1,7 @@
 import { IComponentOptions } from 'angular';
 
+import './nav.component.scss';
+
 const NavComponent: IComponentOptions = {
 
     template: require('./nav.component.html') as string,

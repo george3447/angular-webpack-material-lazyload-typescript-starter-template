@@ -3,7 +3,8 @@
         <md-button ng-click="$ctrl.onToggleSideMenu()" class="md-icon-button">
             <md-icon aria-label="Side Menu" md-font-icon="material-icons">menu</md-icon>
         </md-button>
-        <img class="logo" src="../../../../assets/images/logo.png">
+        <img class="logo" hide-xs src="../../../../assets/images/logo.png" alt="logo">
+        <img class="logo-small" hide-gt-xs src="../../../../assets/images/logo-small.png" alt="logo">
         <h5 ng-if="$ctrl.state && $ctrl.state.data && $ctrl.state.data.moduleTitle" class="header-con" ng-bind="$ctrl.state.data.moduleTitle"></h5>
         <span flex></span>
         <md-menu md-offset="0 60">
