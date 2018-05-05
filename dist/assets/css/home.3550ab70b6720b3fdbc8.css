@@ -1,0 +1,10 @@
+nav .logo-small{display:block;max-width:56px;min-height:38px;margin-right:20px}@media (max-width:599px){nav md-toolbar .header-con{font-size:14px}}
+side-menu{background-color:transparent}side-menu md-list{padding:0}side-menu md-list-item{border:1px solid #eceff1;border-width:0 0 1px;min-height:40px;flex-direction:column;flex-wrap:wrap;align-items:stretch;justify-content:space-between}side-menu md-list-item.md-no-proxy{padding:0}side-menu md-list-item.opened md-list{transform:scaleY(1)}side-menu md-list-item md-list{transform:scaleY(0);transform-origin:top;transition:transform .26s ease}side-menu md-list-item md-list .md-button{text-transform:capitalize;padding-left:20px}side-menu md-list-item md-list .md-button.active:not([disabled]),side-menu md-list-item md-list .md-button:not([disabled]):hover{background-color:#eceff1;color:#607d8b}side-menu md-list-item:before{min-height:40px;content:normal}side-menu md-list-item .md-button{height:40px;width:100%;text-align:left;margin:0;padding-left:10px;border-radius:0}side-menu md-list-item .md-button.active:not([disabled]),side-menu md-list-item .md-button:not([disabled]):hover{background-color:#fbfbfc;color:#607d8b}side-menu md-list-item .md-button md-icon{position:absolute;top:8px;right:10px}side-menu md-list-item .md-button .md-list-item-inner:before{min-height:38px}
+child-component h1{color:green}
+child-one-component h1{color:green}
+child-two-component h1{color:green}
+
+
+home-component .content-con{position:relative}home-component md-sidenav{border-right:1px solid rgba(0,0,0,.117647)}home-component md-sidenav:not(.md-closed):not(.md-closed-remove){position:relative}@media (max-width:456px){home-component .content-con{position:inherit}home-component md-sidenav.md-sidenav-left{position:absolute;top:56px;bottom:0;width:100%;min-width:100%}}
+
+/*# sourceMappingURL=home.3550ab70b6720b3fdbc8.css.map*/

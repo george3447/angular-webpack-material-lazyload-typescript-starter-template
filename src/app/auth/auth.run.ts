@@ -6,7 +6,7 @@ function authRun($transitions: TransitionService, $state: StateService) {
 	$transitions.onSuccess(
 		{
 			to: state => {
-				return state && state.$$state().includes["auth"];
+				return state && state.includes["auth"];
 			}
 		},
 		transition => preloadState(transition, "auth")
@@ -15,7 +15,7 @@ function authRun($transitions: TransitionService, $state: StateService) {
 	$transitions.onStart(
 		{
 			to:state => {
-				return state && state.$$state().includes["auth"];
+				return state && state.includes["auth"];
 			}
 		},
 		() => {

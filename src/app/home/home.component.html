@@ -1,7 +1,7 @@
-<nav state="$ctrl.activeState" on-toggle-side-menu="$ctrl.toggleSideMenu()" on-log-out-click="$ctrl.logOut()"></nav>
+<nav active-menu-item$="$ctrl.activeMenuItem$" todos$="$ctrl.todos$" on-toggle-side-menu="$ctrl.toggleSideMenu()" on-logout-click="$ctrl.logout()"></nav>
 <div layout="row" flex class="content-con">
     <md-sidenav layout="row" md-is-open="$ctrl.isMenuOpen" md-disable-backdrop class="md-sidenav-left" md-component-id="mdSideNavSideMenu">
-        <side-menu layout="column" flex active-menu-item="$ctrl.activeState" on-select-state="$ctrl.selectState(selectedState)"></side-menu>
+        <side-menu layout="column" flex active-menu-item$="$ctrl.activeMenuItem$"></side-menu>
     </md-sidenav>
     <div layout="column" flex id="content">
         <md-content layout="column" flex class="md-padding white-con">

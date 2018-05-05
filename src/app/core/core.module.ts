@@ -9,8 +9,8 @@ const core = module("app.core", [
 	ngMaterial,
 	ngCookies,
 	uiRouter,
-	"ngMessages",
-	"oc.lazyLoad"
+	"ngMessages"//,
+	//"oc.lazyLoad"
 ]).config(configure).name;
 
 export default core;

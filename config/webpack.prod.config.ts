@@ -3,8 +3,9 @@ import * as path from "path";
 
 import * as CleanWebpackPlugin from "clean-webpack-plugin";
 import * as CompressionPlugin from "compression-webpack-plugin";
-import * as ExtractTextPlugin from "extract-text-webpack-plugin";
-import * as UglifyJsPlugin from "uglifyjs-webpack-plugin";
+//import * as ExtractTextPlugin from "extract-text-webpack-plugin";
+import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+//import * as UglifyJsPlugin from "uglifyjs-webpack-plugin";
 import * as WebpackPwaManifest from "webpack-pwa-manifest";
 import * as OfflinePlugin from "offline-plugin";
 
@@ -21,15 +22,16 @@ let cwd = process.cwd();
 let ENV = process.env.npm_lifecycle_event;
 let outputPath = path.join(cwd, "/", ENV);
 
-const extractSASS = new ExtractTextPlugin({
-	filename: `assets/css/${fileName}.css`
-});
+// const extractSASS = new ExtractTextPlugin({
+// 	filename: `assets/css/${fileName}.css`
+// });
 
-const extractCSS = new ExtractTextPlugin({
-	filename: `assets/css/${fileName}.css`
-});
+// const extractCSS = new ExtractTextPlugin({
+// 	filename: `assets/css/${fileName}.css`
+// });
 
 const prodConfiguration: webpack.Configuration = {
+	mode: "production",
 	devtool: "nosources-source-map",
 	output: {
 		path: outputPath,
@@ -41,26 +43,35 @@ const prodConfiguration: webpack.Configuration = {
 	module: {
 		rules: [
 			{
-				test: /\.scss$/,
-				use: extractSASS.extract({
-					fallback: "style-loader",
-					use: [
-						{ loader: "css-loader", options: { sourceMap: true } },
-						{
-							loader: "postcss-loader",
-							options: { sourceMap: true }
-						},
-						{ loader: "sass-loader", options: { sourceMap: true } }
-					]
-				})
+				test: /\.s?[ac]ss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'postcss-loader',
+					'sass-loader',
+				],
 			},
-			{
-				test: /\.css$/,
-				use: extractCSS.extract({
-					fallback: "style-loader",
-					use: { loader: "css-loader", options: { sourceMap: true } }
-				})
-			},
+			// {
+			// 	test: /\.scss$/,
+			// 	use: extractSASS.extract({
+			// 		fallback: "style-loader",
+			// 		use: [
+			// 			{ loader: "css-loader", options: { sourceMap: true } },
+			// 			{
+			// 				loader: "postcss-loader",
+			// 				options: { sourceMap: true }
+			// 			},
+			// 			{ loader: "sass-loader", options: { sourceMap: true } }
+			// 		]
+			// 	})
+			// },
+			// {
+			// 	test: /\.css$/,
+			// 	use: extractCSS.extract({
+			// 		fallback: "style-loader",
+			// 		use: { loader: "css-loader", options: { sourceMap: true } }
+			// 	})
+			// },
 			{
 				test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$/,
 				use: {
@@ -73,7 +84,7 @@ const prodConfiguration: webpack.Configuration = {
 				use: {
 					loader: "file-loader",
 					options: {
-						name: "assets/fonts/[name].[hash].[ext]",
+						name: "[name].[hash].[ext]",
 						outputPath: "assets/fonts/",
 						publicPath: "../../"
 					}
@@ -81,26 +92,29 @@ const prodConfiguration: webpack.Configuration = {
 			}
 		]
 	},
+	optimization: {
+		splitChunks: {
+			name: "vendor"
+		},
+		minimize: true
+	},
 	plugins: [
 		new CleanWebpackPlugin([ENV], { root: cwd, exclude: ["web.config"] }),
 		new webpack.NoEmitOnErrorsPlugin(),
-		extractSASS,
-		extractCSS,
+		new MiniCssExtractPlugin({
+			// Options similar to the same options in webpackOptions.output
+			// both options are optional
+			filename: `assets/css/${fileName}.css`
+		}),
+		//extractSASS,
+		//extractCSS,
 		new webpack.optimize.AggressiveMergingPlugin(),
 		// new webpack.optimize.AggressiveSplittingPlugin({
 		//   minSize: 300000,
 		//   maxSize: 500000
 		// }),
-		new webpack.optimize.CommonsChunkPlugin({
-			names: ["vendor", "manifest"]
-		}),
 		new webpack.optimize.ModuleConcatenationPlugin(),
-		new UglifyJsPlugin({
-			compress: {
-				warnings: false
-			},
-			sourceMap: true
-		}),
+
 		new CompressionPlugin({
 			asset: "[path].gz[query]",
 			algorithm: "gzip",

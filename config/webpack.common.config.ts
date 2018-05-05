@@ -1,16 +1,20 @@
 import * as webpack from "webpack";
-import * as chalk from "chalk";
+import Chalk from "chalk";
 import { format } from "date-fns";
 
 import * as ProgressBarPlugin from "progress-bar-webpack-plugin";
 import * as HtmlWebpackPlugin from "html-webpack-plugin";
 
+import * as path from 'path';
+
 const packageConfig: { version: string } = require("../package.json");
 
 let ENV = process.env.npm_lifecycle_event;
 let nodeENV = process.env.NODE_ENV ? process.env.NODE_ENV : "-";
+let srcPath = path.resolve(__dirname, "../src");
+console.log(srcPath);
 
-console.log(chalk`{blue BUILD ENVIRONMENT}: {green ${nodeENV.toUpperCase()}}
+console.log(Chalk`{blue BUILD ENVIRONMENT}: {green ${nodeENV.toUpperCase()}}
  `);
 
 const commonConfiguration: webpack.Configuration = {
@@ -22,8 +26,8 @@ const commonConfiguration: webpack.Configuration = {
 			"angular-cookies",
 			"angular-messages",
 			"angular-material",
-			"@uirouter/angularjs",
-			"oclazyload"
+			"@uirouter/angularjs"//,
+			//"oclazyload"
 		],
 		app: "./src/app/app.module.ts"
 	},
@@ -35,7 +39,9 @@ const commonConfiguration: webpack.Configuration = {
 				use: {
 					loader: "tslint-loader",
 					options: { emitErrors: true, failOnHint: true }
-				}
+				},
+				include: srcPath,
+				exclude: /node_modules/
 			},
 			{
 				test: /\.ts$/,
@@ -43,9 +49,10 @@ const commonConfiguration: webpack.Configuration = {
 					{ loader: "babel-loader" },
 					{
 						loader: "ts-loader",
-						options: { configFileName: "./tsconfig.esnext.json" }
+						options: { configFile: "tsconfig.esnext.json" }
 					}
 				],
+				include: srcPath,
 				exclude: /node_modules/
 			},
 			{
@@ -53,7 +60,9 @@ const commonConfiguration: webpack.Configuration = {
 				use: {
 					loader: "html-loader",
 					options: { interpolate: true, removeAttributeQuotes: false }
-				}
+				},
+				include: srcPath,
+				exclude: /node_modules/
 			}
 		]
 	},
@@ -66,7 +75,7 @@ const commonConfiguration: webpack.Configuration = {
 		new ProgressBarPlugin({
 			format:
 				"  build [:bar] " +
-				chalk.green.bold(":percent") +
+				Chalk.green.bold(":percent") +
 				" (:elapsed seconds) on " +
 				format(new Date(), "MMMM Do YYYY, h:mm a") +
 				" ",

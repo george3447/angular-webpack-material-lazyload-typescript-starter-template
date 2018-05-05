@@ -1,13 +1,14 @@
 nav {
-    .logo-small {
-        display: block;
-        max-width: 56px;
-        min-height: 38px;
-        margin-right: 20px;
-    }
-    @media (max-width: 599px) {
-        md-toolbar .header-con {
-            font-size: 14px;
-        }
-    }
+	.logo-small {
+		display: block;
+		max-width: 56px;
+		min-height: 38px;
+		margin-right: 20px;
+	}
+
+	@media (max-width: 599px) {
+		md-toolbar .header-con {
+			font-size: 14px;
+		}
+	}
 }

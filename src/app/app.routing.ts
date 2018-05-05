@@ -1,4 +1,4 @@
-import { ICompileProvider } from "angular";
+import { ICompileProvider, ILogProvider } from "angular";
 import {
 	StateProvider,
 	Ng1StateDeclaration,
@@ -10,11 +10,13 @@ import { loadLazyState } from "./shared/util.service";
 function configure(
 	$compileProvider: ICompileProvider,
 	$stateProvider: StateProvider,
-	$urlServiceProvider: UrlService
+	$urlServiceProvider: UrlService,
+	$logProvider:ILogProvider
 ) {
 	let isProductionBuild: boolean = __ENV !== "build";
 
 	$compileProvider.debugInfoEnabled(!isProductionBuild);
+	$logProvider.debugEnabled(!isProductionBuild);
 
 	$urlServiceProvider.rules.initial("/login");
 
@@ -42,7 +44,8 @@ function configure(
 configure.$inject = [
 	"$compileProvider",
 	"$stateProvider",
-	"$urlServiceProvider"
+	"$urlServiceProvider",
+	"$logProvider"
 ];
 
 export default configure;

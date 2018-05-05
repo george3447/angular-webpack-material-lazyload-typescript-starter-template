@@ -25,7 +25,7 @@ function configure(
         return isValid(m) ? m : new Date(NaN);
     };
 
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true).hashPrefix("");
 }
 
 configure.$inject = ['$mdThemingProvider', '$mdDateLocaleProvider', '$locationProvider'];

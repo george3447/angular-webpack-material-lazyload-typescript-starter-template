@@ -7,7 +7,7 @@ class LoaderController implements IComponentController {
 
     static $inject = ['LoaderService'];
 
-    private isVisible: boolean;
+    isVisible: boolean;
 
     constructor(private loaderService: LoaderService) {
         this.loaderService.showRequested$.subscribe((isRequestForShow) => isRequestForShow ? this.show() : this.hide());
