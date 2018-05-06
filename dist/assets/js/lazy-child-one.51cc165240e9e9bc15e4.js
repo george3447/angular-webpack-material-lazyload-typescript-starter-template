@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{474:function(n,o){n.exports="<h1>lazy child one loaded</h1>"},476:function(n,o,e){},504:function(n,o,e){"use strict";e.r(o);var t=e(7),c=(e(476),{controller:function(){return function(){}}(),template:e(474)}),l=Object(t.module)("lazy-child-one",[]).component("lazyChildOneComponent",c).name;o.default=l}}]);
-//# sourceMappingURL=lazy-child-one.51cc165240e9e9bc15e4.js.map

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{476:function(n,o){n.exports=""},478:function(n,o,t){},502:function(n,o,t){"use strict";t.r(o);var e=t(8),c=(t(478),{controller:function(){return function(){}}(),template:t(476)}),i=Object(e.module)("lazy-child",[]).component("lazyChildComponent",c).name;o.default=i}}]);

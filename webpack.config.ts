@@ -1,5 +1,5 @@
 import * as WebpackMerge from 'webpack-merge';
-//const merge = require('webpack-merge');
+
 const target = process.env.npm_lifecycle_event;
 
 import commonConfig from './config/webpack.common.config';
@@ -17,6 +17,6 @@ switch (target) {
         break;
 }
 
-const configuartion = WebpackMerge(commonConfig, config);
+const configuration = WebpackMerge(commonConfig, config);
 
-export default configuartion;
+export default configuration;

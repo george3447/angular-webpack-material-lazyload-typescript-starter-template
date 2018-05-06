@@ -2,3 +2,4 @@ node_modules
 .vscode
 distLocal
 debug.log
+web.config

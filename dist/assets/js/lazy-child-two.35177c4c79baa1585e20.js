@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{470:function(n,o){n.exports="<h1>Lazy child two loaded</h1>"},472:function(n,o,t){},501:function(n,o,t){"use strict";t.r(o);var e=t(8),c=(t(472),{controller:function(){return function(){}}(),template:t(470)}),i=Object(e.module)("lazy-child-two",[]).component("lazyChildTwoComponent",c).name;o.default=i}}]);

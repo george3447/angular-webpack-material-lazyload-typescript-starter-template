@@ -1,5 +1,4 @@
 import * as webpack from "webpack";
-//import * as ExtractTextPlugin from "extract-text-webpack-plugin";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const devConfiguration: webpack.Configuration = {
@@ -13,24 +12,6 @@ const devConfiguration: webpack.Configuration = {
 	devtool: "source-map",
 	module: {
 		rules: [
-			// {
-			// 	test: /\.scss$/,
-			// 	use: ExtractTextPlugin.extract({
-			// 		fallback: "style-loader",
-			// 		use: [
-			// 			{ loader: "css-loader", options: { sourceMap: true } },
-			// 			// { loader: 'postcss-loader', options: { sourceMap: true } },
-			// 			{ loader: "sass-loader", options: { sourceMap: true } }
-			// 		]
-			// 	})
-			// },
-			// {
-			// 	test: /\.css$/,
-			// 	use: ExtractTextPlugin.extract({
-			// 		fallback: "style-loader",
-			// 		use: { loader: "css-loader", options: { sourceMap: true } }
-			// 	})
-			// },
 			{
 				test: /\.s?[ac]ss$/,
 				use: [
@@ -52,9 +33,7 @@ const devConfiguration: webpack.Configuration = {
 				use: {
 					loader: "file-loader",
 					options: {
-						name: "assets/fonts/[name].[ext]"//,
-						//outputPath: "assets/fonts/"//,
-						//publicPath: "../../"
+						name: "assets/fonts/[name].[ext]"
 					}
 				}
 			}
@@ -62,10 +41,7 @@ const devConfiguration: webpack.Configuration = {
 	},
 	plugins: [
 		new webpack.NamedModulesPlugin(),
-		// new ExtractTextPlugin({
-		// 	filename: "assets/css/[name].css",
-		// 	allChunks: false
-		// }),
+		
 		new MiniCssExtractPlugin({
 			// Options similar to the same options in webpackOptions.output
 			// both options are optional

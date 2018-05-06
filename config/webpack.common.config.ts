@@ -19,16 +19,6 @@ console.log(Chalk`{blue BUILD ENVIRONMENT}: {green ${nodeENV.toUpperCase()}}
 
 const commonConfiguration: webpack.Configuration = {
 	entry: {
-		vendor: [
-			"angular",
-			"angular-aria",
-			"angular-animate",
-			"angular-cookies",
-			"angular-messages",
-			"angular-material",
-			"@uirouter/angularjs"//,
-			//"oclazyload"
-		],
 		app: "./src/app/app.module.ts"
 	},
 	module: {
