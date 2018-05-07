@@ -1,0 +1,47 @@
+{
+  "icons": [
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_1024x1024.a9946a9fbe7d09ce349d4c2bddbd156a.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_512x512.05c073956a3828bad19042d166ec52df.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_384x384.9773282b9351e8c6458ca08da66e7b6c.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_256x256.7b705e65a37f836b4c04388583f8e086.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_192x192.527f054ad1275b67c3087e039a8c066c.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_128x128.362da9e3d972399fb8ee3d11b78c3e2b.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/angular-webpack-material-lazyload-typescript-starter-template/assets/icons/icon_96x96.680a2fc171effdab906808d0f9c95d50.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "angular-webpack-material-lazyload-typescript-starter-template",
+  "short_name": "Angular PWA",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "An Angular 1.5 + Angular Material + Typescript + Webpack starter template with code splitting and lazy loading",
+  "background_color": "#ffffff",
+  "theme_color": "#607d8b"
+}
