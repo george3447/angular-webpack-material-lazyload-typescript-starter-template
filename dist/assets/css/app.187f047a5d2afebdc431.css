@@ -3,4 +3,4 @@ loader md-progress-linear{position:fixed;top:0;z-index:1000}
 auth-component .main-container{height:75%}auth-component .main-container .logo{margin-right:10px}auth-component .main-container .md-caption{margin-top:20px}@media (max-width:599px){auth-component .main-container{height:100%}}
 login .login-logo{font-size:72px;width:72px;height:72px;min-width:72px;min-height:72px;color:#607d8b;border-radius:100%}login .md-button.forgot-button{text-transform:capitalize}login .md-button.forgot-button.active:not([disabled]),login .md-button.forgot-button:not([disabled]):hover{text-decoration:underline;background-color:transparent}login .md-button.forgot-button md-icon{font-size:16px;font-size:18px;width:18px;height:18px;min-width:18px;min-height:18px;width:24px}
 
-/*# sourceMappingURL=app.948dbe73884ab23c0cc5.css.map*/
+/*# sourceMappingURL=app.187f047a5d2afebdc431.css.map*/
