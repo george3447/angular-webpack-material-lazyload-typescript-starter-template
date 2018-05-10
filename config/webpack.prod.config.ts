@@ -12,7 +12,7 @@ const packageConfig: any = require("../package.json");
 
 const fileName = "[name].[chunkhash]";
 const hostEndPoint = {
-	dist: "/angular-webpack-material-lazyload-typescript-starter-template",
+	dist: "/angular-webpack-material-lazyload-typescript-starter-template/",
 	distLocal: "",
 	analyseBuild: ""
 };
